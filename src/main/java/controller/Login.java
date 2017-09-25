@@ -27,7 +27,7 @@ public class Login extends HttpServlet {
 		String pass = password[password.length - 1];
 
 		if (/*us.findUser(user, pass)*/ true) {
-			RequestDispatcher view = req.getRequestDispatcher("Booking.jsp");
+			RequestDispatcher view = req.getRequestDispatcher("/welcome");
 			view.forward(req, res);
 		} else {
 			RequestDispatcher view = req.getRequestDispatcher("index.jsp");
