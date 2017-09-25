@@ -1,8 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
+		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     	<script type='text/javascript' src='includes/angular.js'></script>
     	<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
@@ -12,21 +14,62 @@
 		<title>Welcome</title>
 	</head>
 	<body>
-		<div class="container" id="welcomeDiv">			
-			<header class="text-center" id="header">Hotel Tristar</header>
-			<nav class="text-center">
-				<div class="container-fluid">
-					<div class="navbar-header">
-						<a class="navbar-brand" href="#">Hotel Tristar</a>
+		<div class="container-fluid" id="welcomeDiv">			
+			<header class="text-center" id="header">
+				<h1>Hotel Tristar</h1>
+			</header>
+		</div>
+		<div id="wrapper">
+			<div id="navbarDiv">
+				<nav class="navbar navbar-default">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<a class="navbar-brand">Tristar ***</a>
+						</div>
+						<ul class="nav navbar-nav col-sm-5">
+							<li class="active"><a>Home</a></li>
+							<li><a>Booking</a></li>
+							<li><a>Gallery</a></li>
+							<li><a>Contact</a></li>
+						</ul>
 					</div>
-					<ul class="nav navbar-nav">
-						<li class="active">Home</li>
-						<li>Booking</li>
-						<li>Gallery</li>
-						<li>Contact</li>
-					</ul>
-				</div>
-			</nav>
+				</nav>
+			</div>
+			<div id="bodyDiv">
+				<section>
+					<div id="infoDiv">
+						<div id="pricesDivLeft">
+							<p>
+							Berekfürdőn a strandfürdőtől 50 méterre kínálunk külön bejáratú, 
+							zárt parkolóval ellátott, fürdőszobás apartmanokat. Faházainktól 
+							a kempingen keresztül tényleg csak egy perc a strand, nem sétával 
+							fog telni a nyaralása!
+							</p>
+							<br>
+							<p>
+							A 3 ágyas szobák ára 3 fő esetén 2300 Ft/fő/éj, ami a teljes szobára:
+							6900 Ft/éj/szoba!
+							</p>
+							<br>
+							<p>
+							A 4 ágyas szobák ára 4 fő esetén 1975 Ft/fő/éj, ami a teljes szobára:
+							7900 Ft/éj/szoba!
+							</p>
+							<br>
+							<p>
+							Nálunk a gépkocsibeállás díjmentes, így autóját is biztonságban tudhatja! Jöjjön el és próbálja ki!
+							OTP SZÉP-kártyáját is használhatja!
+							</p>
+						</div>
+						<div id="picturesDivRight">
+							PICTURES
+						</div>
+						<div id="footerDiv">
+							Szállásfoglalás minden esetben telefonos egyeztetés útján történik, egyéb kérdés esetén a következő címen is állunk rendelkezésre: info@berekfurdoszallas.eu
+						</div>
+					</div>
+				</section>
+			</div>
 		</div>
 	</body>
 </html>
