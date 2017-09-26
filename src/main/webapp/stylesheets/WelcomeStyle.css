@@ -23,10 +23,12 @@ body {
 	width: 50%;
 	margin-left: 5%;
 	margin-right: 5%;
+	position: relative;
 }
 
 #picturesDivRight {
-	
+	position: relative;
+	margin-left: 55%;
 }
 
 #footerDiv {
@@ -36,4 +38,15 @@ body {
 	position: static;
 	margin-left: 5%;
 	margin-right: 5%;
+}
+
+#userId {
+	position: relative;
+	float: right;
+}
+
+img {
+	margin-bottom: 5px;
+	width: 70%;
+	height: 60%;
 }

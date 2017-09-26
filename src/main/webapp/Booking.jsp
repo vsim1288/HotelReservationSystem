@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="utf-8"%>
+<!-- JSTL import -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
-		<meta charset="utf-8">
   		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     	<script type='text/javascript' src='includes/angular.js'></script>
@@ -14,6 +16,12 @@
 		<title>Welcome</title>
 	</head>
 	<body>
+		<div class="container-fluid">
+			<c:if test="${sessionScope.user == null}">
+				<p>IS NULL</p>
+			</c:if>
+			<h3 id="userId">Welcome back, ${sessionScope.user}</h3>
+		</div>
 		<div class="container-fluid" id="welcomeDiv">			
 			<header class="text-center" id="header">
 				<h1>Hotel Tristar</h1>
@@ -62,7 +70,12 @@
 							</p>
 						</div>
 						<div id="picturesDivRight">
-							PICTURES
+							<h3>PICTURES</h3>
+							<br>
+							<img src="images/hotel-inside.jpg"/>
+							<br>
+							<img src="images/hotel-outside.jpg"/>
+							<br>
 						</div>
 						<div id="footerDiv">
 							Szállásfoglalás minden esetben telefonos egyeztetés útján történik, egyéb kérdés esetén a következő címen is állunk rendelkezésre: info@berekfurdoszallas.eu
