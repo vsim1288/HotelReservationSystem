@@ -22,10 +22,10 @@ public class Login extends HttpServlet {
 		session.setMaxInactiveInterval(5);
 		
 		if(session.isNew()) {		
-			RequestDispatcher view = req.getRequestDispatcher("index.jsp");
+			RequestDispatcher view = req.getRequestDispatcher("./index.jsp");
 			view.forward(req, res);
 		} else {
-			RequestDispatcher view = req.getRequestDispatcher("Booking.jsp");
+			RequestDispatcher view = req.getRequestDispatcher("./Booking.jsp");
 			view.forward(req, res);
 		}
 	}
@@ -46,7 +46,7 @@ public class Login extends HttpServlet {
 //			RequestDispatcher view = req.getRequestDispatcher("/welcome");
 //			view.forward(req, res);
 		} else {
-			RequestDispatcher view = req.getRequestDispatcher("index.jsp");
+			RequestDispatcher view = req.getRequestDispatcher("./index.jsp");
 			view.forward(req, res);
 		}
 	}

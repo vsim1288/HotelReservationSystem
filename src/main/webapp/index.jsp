@@ -19,7 +19,7 @@
 			</div>
 			<br>
 			
-			<form class="form-horizontal" method="POST" action="/HotelReservationSystem/login">
+			<form class="form-horizontal" method="POST" action="/login">
 				<div class="form-group">
 					<label class="control-label col-sm-5" for="username">Username:</label>
 					<div class="col-sm-2">
