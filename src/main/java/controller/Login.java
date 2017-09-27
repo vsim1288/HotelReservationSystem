@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import model.User;
 import rest.UserService;
 
+@SuppressWarnings("unused")
 public class Login extends HttpServlet {
 
 	private static final long serialVersionUID = -5248890857301913501L;
@@ -29,7 +30,6 @@ public class Login extends HttpServlet {
 		}
 	}
 
-	@SuppressWarnings("unused")
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		UserService us = new UserService();
 		String[] username = req.getParameterValues("username");
@@ -42,8 +42,9 @@ public class Login extends HttpServlet {
 
 			session.setAttribute("user", user);
 			
-			RequestDispatcher view = req.getRequestDispatcher("/welcome");
-			view.forward(req, res);
+			res.sendRedirect("./welcome");
+//			RequestDispatcher view = req.getRequestDispatcher("/welcome");
+//			view.forward(req, res);
 		} else {
 			RequestDispatcher view = req.getRequestDispatcher("index.jsp");
 			view.forward(req, res);

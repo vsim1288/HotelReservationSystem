@@ -7,6 +7,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>HotelReservationSystem Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+	<packaging>war</packaging>
 
 	<repositories>
 		<repository>
@@ -78,12 +79,11 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+		
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
+		    <groupId>jstl</groupId>
+		    <artifactId>jstl</artifactId>
+		    <version>1.2</version>
 		</dependency>
 
 	</dependencies>
