@@ -1,0 +1,20 @@
+<div id="navbarDiv">
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand">Tristar ***</a>
+			</div>
+			<ul class="nav navbar-nav col-sm-5">
+				<li ng-class="{active:tab.isSet(1)}"><a ng-click="tab.setTab(1)">Home</a></li>
+				<li ng-class="{active:tab.isSet(2)}"><a ng-click="tab.setTab(2)">Booking</a></li>
+				<li ng-class="{active:tab.isSet(3)}"><a ng-click="tab.setTab(3)">Gallery</a></li>
+				<li ng-class="{active:tab.isSet(4)}"><a ng-click="tab.setTab(4)">Contact</a></li>
+			</ul>
+		</div>
+	</nav>
+</div>
+
+<home 	 ng-show="tab.isSet(1)"></home>
+<booking ng-show="tab.isSet(2)"></booking>
+<gallery ng-show="tab.isSet(3)"></gallery>
+<contact ng-show="tab.isSet(4)"></contact>
