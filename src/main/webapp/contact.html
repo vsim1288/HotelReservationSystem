@@ -1,1 +1,32 @@
 <h1>Contact</h1>
+<h3>Name: <em>Hotel Tristar</em></h3>
+<h3>Address: <em>Address</em></h3>
+<h3>Phone: <em>1234567890</em></h3>
+<br>
+<h3>GoogleMaps location</h3>
+<script>
+	
+
+	function initMap() {	
+		var map;
+		var marker;
+		
+		map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 8,
+			center: {lat:46.756866, lng:23.542428},
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		});
+		
+		marker = new google.maps.Marker({
+			position: {lat:47.756866, lng:23.542428},
+			map:map
+		});
+		
+		google.maps.event.addListener(map, 'bounds_changed', function() {
+			google.maps.event.trigger(map, 'resize');
+		});
+	}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQoy4O4wFQ3sx-sawg2H98E8k79ZLpP-c&callback=initMap"
+async defer></script>
+<div id="map"></div>
