@@ -1,10 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:m="http://code.google.com/p/gmaps4jsf/">
 
 <h:head>
 	<meta content="ISO-8859-2"></meta>
@@ -15,7 +17,10 @@
 		src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 	<link rel='stylesheet'
 		href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />
-
+	<script type="text/javascript"
+		src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false">
+		
+	</script>
 	<title>Welcome</title>
 </h:head>
 <h:body>
@@ -26,12 +31,34 @@
 	<div class="container-fluid" id="welcomeDiv">
 		<h1 class="text-center">Hotel Tristar</h1>
 	</div>
-	<div id="wrapper">
-		<div id="homeBody">
-			<ui:insert name="home">
-				<ui:include src="/pages/home.xhtml" />
-			</ui:insert>
-		</div>
-	</div>
+	<h:panelGroup id="navbarDiv" layout="block">
+		<nav class="navbar navbar-default"> <h:panelGroup
+			class="container-fluid" layout="block">
+			<h:panelGroup class="navbar-header" layout="block">
+				<a class="navbar-brand">Tristar ***</a>
+			</h:panelGroup>
+			<h:panelGroup id="navMenu" layout="block">
+				<h:form>
+					<f:ajax render=":wrapper">
+						<ul class="nav navbar-nav col-sm-5">
+							<li class="active"><h:commandLink value="Home"
+									action="#{navBean.setPage('home')}"></h:commandLink></li>
+							<li class="active"><h:commandLink value="Booking"
+									action="#{navBean.setPage('booking')}"></h:commandLink></li>
+							<li class="active"><h:commandLink value="Gallery"
+									action="#{navBean.setPage('gallery')}"></h:commandLink></li>
+							<li class="active"><h:commandLink value="Contact"
+									action="#{navBean.setPage('contact')}"></h:commandLink></li>
+						</ul>
+					</f:ajax>
+				</h:form>
+			</h:panelGroup>
+		</h:panelGroup> </nav>
+	</h:panelGroup>
+	<h:panelGroup id="wrapper" layout="block">
+		<ui:insert name="body">
+			<ui:include src="/pages/#{navBean.page}.xhtml" />
+		</ui:insert>
+	</h:panelGroup>
 </h:body>
 </html>

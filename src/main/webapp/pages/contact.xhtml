@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:m="http://code.google.com/p/gmaps4jsf/">
+	
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
+	<title>home</title>
+	<script src="http://maps.googleapis.com/maps/api/js?v=3.14&amp;sensor=false"></script>
+</h:head>
+<body>
+	<ui:composition>
+		<h1>Contact</h1>
+		<h3>
+			Name: <em>Hotel Tristar</em>
+		</h3>
+		<h3>
+			Address: <em>Address</em>
+		</h3>
+		<h3>
+			Phone: <em>1234567890</em>
+		</h3>
+		<br></br>
+		<h3>GoogleMaps location</h3>
+
+		<f:view>
+			<h:form id="form">
+				<m:map zoom="16" width="700px" height="500px" address="Cluj-Napoca">
+					<m:mapControl name="GLargeMapControl"
+						position="G_ANCHOR_BOTTOM_LEFT" />
+					<m:mapControl name="GMapTypeControl" />
+					<m:htmlInformationWindow htmlText="White house"></m:htmlInformationWindow>
+				</m:map>
+			</h:form>
+		</f:view>
+	</ui:composition>
+</body>
+</html>
