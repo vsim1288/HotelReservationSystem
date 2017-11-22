@@ -30,16 +30,21 @@ public class SessionFilter implements Filter {
 		try {
 			HttpServletRequest req = (HttpServletRequest) request;
 			HttpServletResponse res = (HttpServletResponse) response;
-			HttpSession session = req.getSession(false);
+			HttpSession session = req.getSession();
 
 			String reqURI = req.getRequestURI();
 
-			System.out.println(reqURI + " " + req.getSession().getAttribute("loginBean"));
-
+			System.out.println(reqURI + " " + session.getAttribute("username"));
 			if (reqURI.indexOf("/pages/index.xhtml") >= 0
-					|| session != null && session.getAttribute("loginBean") != null
-					|| reqURI.contains("javax.faces.resource")) {
-
+					&& session.getAttribute("username") != null) {
+				res.sendRedirect("/pages/commonLayout.xhtml");
+			}
+			
+			if (reqURI.indexOf("/pages/index.xhtml") >= 0
+					|| session.getAttribute("username") != null
+					|| reqURI.contains("javax.faces.resource")
+					|| reqURI.contains("/pages/registration.xhtml")) {
+				
 				chain.doFilter(request, response);
 			} else {
 				res.sendRedirect("/pages/index.xhtml");

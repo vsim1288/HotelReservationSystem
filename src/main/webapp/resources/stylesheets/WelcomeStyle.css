@@ -60,6 +60,10 @@ body {
 	width: 100%;
 }
 
+li:hover {
+	background-color: lightgrey;
+}
+
 li.small-image {
 	width: 50px;
 	height: 50px;

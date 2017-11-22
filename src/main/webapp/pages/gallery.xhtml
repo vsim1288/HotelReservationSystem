@@ -4,22 +4,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<title>home</title>
+	<title>gallery</title>
 </h:head>
 <body>
 	<ui:composition>
 		<h:panelGroup id="gallery" layout="block">
 			<h1>Gallery</h1>
-			<h4>Thumbnails</h4>
-			<ul class="img-thumbnails clearfix">
-
-			</ul>
-			<h4>Picture</h4>
-			<h:panelGroup layout="block">
-
-			</h:panelGroup>
+			<p:galleria value="#{imagesView.images}" var="image" panelWidth="500"
+				panelHeight="313" showCaption="true">
+				<p:graphicImage name="images/#{image}"
+					alt="Image Description for #{image}" title="#{image}" />
+			</p:galleria>
 		</h:panelGroup>
 	</ui:composition>
 </body>

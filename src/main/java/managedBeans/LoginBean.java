@@ -7,6 +7,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -82,12 +83,15 @@ public class LoginBean implements Serializable {
 				System.out.println(" Name:" + returnedUser.getUsername() + " Password: " + returnedUser.getPassword()
 						+ " Role: " + returnedUser.getRole().getRoleName());
 
-				System.out.println("ok");
+				HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext()
+						.getSession(false);
+
+				session.setAttribute("username", username);
 
 				return "ok";
 			} catch (Exception e) {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
-						"Incorrect Username and Password", "Please enter correct username and Password"));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Incorrect Username and Password",
+						"Please enter correct username and Password"));
 
 				return null;
 			}
@@ -98,4 +102,9 @@ public class LoginBean implements Serializable {
 		}
 	}
 
+	public String logout() {
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		session.invalidate();
+		return "login";
+	}
 }

@@ -20,7 +20,7 @@
 		<h:panelGroup id="headerMenu" layout="block">
 			<h:form id="goBackForm">
 				<h:commandButton id="goBackBtn" class="btn btn-default"
-					value="Go back" action="index"></h:commandButton>
+					value="Go back" action="index?faces-redirect=true"></h:commandButton>
 			</h:form>
 		</h:panelGroup>
 		<h:panelGroup class="row" layout="block">
@@ -37,7 +37,7 @@
 		<h:panelGroup class="text-center" id="registrationFormDiv"
 			layout="block">
 
-			<h:message id="message" globalOnly="true"></h:message>
+			<h:messages id="message" globalOnly="true"></h:messages>
 
 			<h:form id="regFormId" class="form-horizontal">
 				<div class="form-group text-center">
@@ -115,6 +115,7 @@
 						<h:inputSecret class="form-control" id="password"
 							placeholer="Enter password" value="#{regBean.password}">
 							<f:validateLength minimum="6" maximum="20"/>
+							<f:validator validatorId="validators.PasswordValidator"></f:validator>
 						</h:inputSecret>
 					</div>
 				</div>

@@ -6,6 +6,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:m="http://code.google.com/p/gmaps4jsf/">
 
 <h:head>
@@ -41,14 +42,16 @@
 				<h:form>
 					<f:ajax render=":wrapper">
 						<ul class="nav navbar-nav col-sm-6 text-center">
-							<li class="active"><h:commandLink value="Home"
+							<li><h:commandLink value="Home"
 									action="#{navBean.setPage('home')}"></h:commandLink></li>
-							<li class="active "><h:commandLink value="Booking"
+							<li><h:commandLink value="Booking"
 									action="#{navBean.setPage('booking')}"></h:commandLink></li>
-							<li class="active"><h:commandLink value="Gallery"
+							<li><h:commandLink value="Gallery"
 									action="#{navBean.setPage('gallery')}"></h:commandLink></li>
-							<li class="active"><h:commandLink value="Contact"
+							<li><h:commandLink value="Contact"
 									action="#{navBean.setPage('contact')}"></h:commandLink></li>
+							<li><h:commandLink value="Logout"
+									action="#{loginBean.logout}"></h:commandLink></li>
 						</ul>
 					</f:ajax>
 				</h:form>
