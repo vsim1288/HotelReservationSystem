@@ -1,13 +1,13 @@
-package interfaces;
+package dao;
 
 import java.util.List;
 
-import model.User;
+import entities.User;
 
 public interface UserDAO {
 	public List<User> findAll();
-	public boolean findByUser(User user);
-	public boolean insertUser(User user);
+	public User findByUserAndPassword(User user);
+	public User insertUser(User user);
 	public boolean updateUser(User user);
 	public boolean deleteUser(User user);
 }

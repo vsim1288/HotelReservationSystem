@@ -19,6 +19,8 @@
 		<property name="hbm2ddl.auto">update</property>
 
 		<!-- Mapping With Model Class Containing Annotations -->
-		<mapping class="model.User" />
+		<mapping class="entities.User" />
+		<mapping class="entities.Role" />
+		<mapping class="entities.UserInformation" />
 	</session-factory>
 </hibernate-configuration>

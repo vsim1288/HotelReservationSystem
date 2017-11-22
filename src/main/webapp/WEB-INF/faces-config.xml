@@ -10,11 +10,29 @@
 			<from-action>#{loginBean.login}</from-action>
 			<from-outcome>ok</from-outcome>
 			<to-view-id>/pages/commonLayout.xhtml</to-view-id>
+			<redirect />
 		</navigation-case>
 		<navigation-case>
 			<from-action>#{loginBean.login}</from-action>
 			<from-outcome>fail</from-outcome>
 			<to-view-id>/pages/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/pages/registration.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{regBean.validate}</from-action>
+			<from-outcome>ok</from-outcome>
+			<to-view-id>/pages/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{regBean.validate}</from-action>
+			<from-outcome>fail</from-outcome>
+			<to-view-id>/pages/registration.xhtml</to-view-id>
+			<redirect />
 		</navigation-case>
 	</navigation-rule>
 </faces-config>

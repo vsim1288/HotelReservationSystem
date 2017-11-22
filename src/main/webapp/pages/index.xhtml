@@ -24,7 +24,8 @@
 		</div>
 		<br></br>
 
-		<h:form class="form-horizontal">
+		<h:form id="loginForm" class="form-horizontal">
+			<h:messages for="username" class="errMsg" id="loginMsg"></h:messages>
 			<div class="form-group">
 				<label class="control-label col-sm-5" for="username">Username:</label>
 				<div class="col-sm-2">
@@ -45,7 +46,8 @@
 			<div class="form-group">
 				<h:commandButton class="btn btn-default col-sm-offset-5 col-sm-1"
 					value="Login" action="#{loginBean.login}"></h:commandButton>
-				<h:commandButton class="btn btn-default col-sm-1" value="Register"></h:commandButton>
+				<h:commandButton class="btn btn-default col-sm-1"
+					action="registration?faces-redirect=true" value="Register"></h:commandButton>
 			</div>
 		</h:form>
 	</div>

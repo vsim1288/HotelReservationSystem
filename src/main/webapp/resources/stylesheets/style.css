@@ -5,3 +5,7 @@ body {
 #loginDiv {
 	padding-top: 12%;
 }
+
+.errMsg {
+	color: red;
+}
