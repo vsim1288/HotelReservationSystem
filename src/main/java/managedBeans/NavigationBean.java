@@ -23,14 +23,18 @@ public class NavigationBean implements Serializable {
 	/**
 	 * @return the page
 	 */
-	public String getPage() {
-		return page;
+	public String getPage(String page) {
+		setPage(page);
+		
+		return this.page;
 	}
 
 	/**
 	 * @param page the page to set
 	 */
 	public void setPage(String page) {
-		this.page = page;
+		System.out.println("set: " + page);
+		
+		this.page = page + "?faces-redirect=true";
 	}
 }

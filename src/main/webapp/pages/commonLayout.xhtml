@@ -23,12 +23,12 @@
 </h:head>
 <h:body>
 	<h:outputStylesheet name="WelcomeStyle.css" library="stylesheets" />
-	<div class="container-fluid">
+	<h:panelGroup class="container-fluid">
 		<h3 id="userId">Welcome back, #{loginBean.username}</h3>
-	</div>
-	<div class="container-fluid" id="welcomeDiv">
+	</h:panelGroup>
+	<h:panelGroup class="container-fluid" id="welcomeDiv">
 		<h1 class="text-center">Hotel Tristar</h1>
-	</div>
+	</h:panelGroup>
 	<h:panelGroup class='container' id="navbarDiv" layout="block">
 		<nav class="navbar navbar-default"> <h:panelGroup
 			class="container-fluid" layout="block">
@@ -39,7 +39,7 @@
 				<h:form>
 					<f:ajax render=":wrapper">
 						<ul class="nav navbar-nav col-sm-6 text-center">
-							<li><h:commandLink value="Home"
+							<li class="active"><h:commandLink value="Home"
 									action="#{navBean.setPage('home')}"></h:commandLink></li>
 							<li><h:commandLink value="Booking"
 									action="#{navBean.setPage('booking')}"></h:commandLink></li>
@@ -56,9 +56,38 @@
 		</h:panelGroup> </nav>
 	</h:panelGroup>
 	<h:panelGroup id="wrapper" layout="block">
-		<ui:insert name="body">
-			<ui:include src="/pages/#{navBean.page}.xhtml" />
-		</ui:insert>
+		<h:panelGroup id="bodyDiv">
+			<h:panelGroup id="infoDiv">
+				<h:panelGroup id="pricesDivLeft">
+
+					<p>Berekfürdõ este la 50 de metri distanță de plajă,
+						apartamente cu intrare privată și parcare privată. Din cabanele
+						noastre prin campus, este doar un minut până la plajă, nu vei avea
+						o plimbare în vacanța ta!</p>
+					<br></br>
+					<p>Camerele cu 3 paturi sunt disponibile pentru 3 persoane 2300
+						HUF / persoană / noapte, care este plină cameră: 6900 HUF / noapte
+						/ cameră!</p>
+					<br></br>
+					<p>Prețul camerei cu 4 paturi pentru 4 persoane este de 1975
+						HUF / persoană / noapte, care este total cameră: 7900 HUF / noapte
+						/ cameră!</p>
+					<br></br>
+					<p>Parcarea este gratuită, astfel încât mașina dvs. este în
+						siguranță!</p>
+				</h:panelGroup>
+
+				<h:panelGroup id="picturesDivRight">
+					<h3>PICTURES</h3>
+					<br></br> <img src="/images/hotel-inside.jpg" /> <br></br> <img
+						src="/images/hotel-outside.jpg" /> <br></br>
+				</h:panelGroup>
+				<h:panelGroup id="footerDiv">În toate cazurile este disponibilă
+					rezervarea prin telefon prin negociere, cu privire la alte aspecte,
+					de asemenea, la următoarea adresă suntem disponibili la adresa
+					info@berekfurdoszallas.eu</h:panelGroup>
+			</h:panelGroup>
+		</h:panelGroup>
 	</h:panelGroup>
 </h:body>
 </html>
