@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
 <h:head>
 	<meta content="ISO-8859-2"></meta>
@@ -34,7 +35,7 @@
 				<label class="control-label col-sm-5" for="username">Username:</label>
 				<div class="col-sm-2">
 					<h:inputText class="form-control" name="username" id="username"
-						placeholder="Enter username" required="true"
+						pt:placeholder="Enter username" required="true"
 						value="#{loginBean.username}">
 					</h:inputText>
 				</div>
@@ -43,7 +44,7 @@
 				<label class="control-label col-sm-5" for="password">Password:</label>
 				<div class="col-sm-2">
 					<h:inputSecret class="form-control" name="password" id="password"
-						placeholder="Enter password" required="true"
+						pt:placeholder="Enter password" required="true"
 						value="#{loginBean.password}"></h:inputSecret>
 				</div>
 			</div>

@@ -6,19 +6,24 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
+<!-- xmlns:m="http://code.google.com/p/gmaps4jsf/"-->
 <h:head>
-	<title>gallery</title>
+
 </h:head>
-<body>
-	<ui:composition>
+<h:body>
+<!--	<ui:composition> -->
+
 		<h:panelGroup id="gallery" layout="block">
 			<h1>Gallery</h1>
-			<p:galleria value="#{imagesView.images}" var="image" panelWidth="500"
-				panelHeight="313" showCaption="true">
-				<p:graphicImage name="images/#{image}" alt="#{image}"
-					title="#{image}" />
-			</p:galleria>
+			<h:panelGroup class="text-center" id="slideshow" layout="block">
+				<p:galleria value="#{imagesView.images}" var="image"
+					panelWidth="500" panelHeight="500" showCaption="false"
+					effect="slide" transitionInterval="3000">
+					<p:graphicImage name="images/#{image}" alt="#{image}"
+						title="#{image}" width="500" height="500"/>
+				</p:galleria>
+			</h:panelGroup>
 		</h:panelGroup>
-	</ui:composition>
-</body>
+<!--	</ui:composition> -->
+</h:body>
 </html>

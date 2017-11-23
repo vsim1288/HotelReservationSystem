@@ -5,15 +5,16 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:m="http://code.google.com/p/gmaps4jsf/">
+	xmlns:p="http://primefaces.org/ui">
+	<!-- xmlns:m="http://code.google.com/p/gmaps4jsf/"-->
 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
 	<title>home</title>
-	<script
-		src="http://maps.googleapis.com/maps/api/js?v=3.14&amp;sensor=false"></script>
+	<!--<script
+		src="http://maps.googleapis.com/maps/api/js?v=3.14&amp;sensor=false"></script>-->
 </h:head>
-<body>
+<h:body>
 	<ui:composition>
 		<h1>Contact</h1>
 		<h3>
@@ -27,7 +28,7 @@
 		</h3>
 		<br></br>
 		<h3>GoogleMaps location</h3>
-
+<!--
 		<f:view>
 			<h:form id="form">
 				<m:map zoom="16" width="700px" height="500px" address="Cluj-Napoca">
@@ -37,7 +38,7 @@
 					<m:htmlInformationWindow htmlText="White house"></m:htmlInformationWindow>
 				</m:map>
 			</h:form>
-		</f:view>
+		</f:view>-->
 	</ui:composition>
-</body>
+</h:body>
 </html>

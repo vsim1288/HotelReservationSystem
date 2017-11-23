@@ -6,24 +6,22 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:m="http://code.google.com/p/gmaps4jsf/">
+	xmlns:p="http://primefaces.org/ui">
+	<!-- xmlns:m="http://code.google.com/p/gmaps4jsf/"-->
 
 <h:head>
 	<meta content="ISO-8859-2"></meta>
 	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-	<script
-		src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 	<script
 		src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 	<link rel='stylesheet'
 		href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />
 	<script type="text/javascript"
 		src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false">
-		
 	</script>
 	<title>Welcome</title>
 </h:head>
-<body>
+<h:body>
 	<h:outputStylesheet name="WelcomeStyle.css" library="stylesheets" />
 	<div class="container-fluid">
 		<h3 id="userId">Welcome back, #{loginBean.username}</h3>
@@ -62,5 +60,5 @@
 			<ui:include src="/pages/#{navBean.page}.xhtml" />
 		</ui:insert>
 	</h:panelGroup>
-</body>
+</h:body>
 </html>
