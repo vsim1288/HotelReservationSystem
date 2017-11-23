@@ -15,8 +15,8 @@
 			<h1>Gallery</h1>
 			<p:galleria value="#{imagesView.images}" var="image" panelWidth="500"
 				panelHeight="313" showCaption="true">
-				<p:graphicImage name="images/#{image}"
-					alt="Image Description for #{image}" title="#{image}" />
+				<p:graphicImage name="images/#{image}" alt="#{image}"
+					title="#{image}" />
 			</p:galleria>
 		</h:panelGroup>
 	</ui:composition>

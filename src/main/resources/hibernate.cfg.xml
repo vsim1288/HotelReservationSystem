@@ -22,5 +22,6 @@
 		<mapping class="entities.User" />
 		<mapping class="entities.Role" />
 		<mapping class="entities.UserInformation" />
+		<mapping class="entities.Photo"/>
 	</session-factory>
 </hibernate-configuration>

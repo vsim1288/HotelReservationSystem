@@ -1,31 +1,30 @@
 package managedBeans;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
+import entities.Photo;
+import service.PhotoService;
 
 @ManagedBean(name="imagesView")
-@ViewScoped
+@SessionScoped
 public class ImageBean implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 7907300671134715356L;
-	private List<String> images;
+	private List<Photo> images;
     
     @PostConstruct
     public void init() {
-        images = new ArrayList<String>();
-        for (int i = 0; i < 5; i++) {
-            images.add("hotel-" + i + ".jpg");
-        }
+        PhotoService photoService = new PhotoService();
+        images = photoService.getAll();
     }
  
-    public List<String> getImages() {
+    public List<Photo> getImages() {
         return images;
     }
 }
