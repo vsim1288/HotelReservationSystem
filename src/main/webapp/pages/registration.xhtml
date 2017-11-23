@@ -3,7 +3,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
 	<script
@@ -15,7 +16,7 @@
 	<h:outputStylesheet name="stylesheets/registerStyle.css" />
 	<title>Hotel Tristar</title>
 </h:head>
-<body>
+<body style="background-color:lightblue">
 	<h:panelGroup class="container" id="registerDiv" layout="block">
 		<h:panelGroup id="headerMenu" layout="block">
 			<h:form id="goBackForm">
@@ -46,8 +47,8 @@
 					<div class="col-sm-2">
 						<h:inputText class="form-control" id="firstName"
 							placeholer="Enter first name" value="#{regBean.firstName}">
-							<f:validateLength minimum="3" maximum="15"/>
-							<f:validator validatorId="validators.FirstNameValidator"/>>
+							<f:validateLength minimum="3" maximum="15" />
+							<f:validator validatorId="validators.FirstNameValidator" />>
 						</h:inputText>
 						<h:message for="firstName" class="errMsg"></h:message>
 					</div>
@@ -60,7 +61,7 @@
 					<div class="col-sm-2">
 						<h:inputText class="form-control" id="lastName"
 							placeholer="Enter first name" value="#{regBean.lastName}">
-							<f:validateLength minimum="3" maximum="15"/>
+							<f:validateLength minimum="3" maximum="15" />
 						</h:inputText>
 					</div>
 				</div>
@@ -80,7 +81,7 @@
 					<div class="col-sm-2">
 						<h:inputText class="form-control" id="phone"
 							placeholer="Enter phone number" value="#{regBean.phone}">
-							<f:validateLength minimum="10" maximum="10"/>
+							<f:validateLength minimum="10" maximum="10" />
 						</h:inputText>
 					</div>
 				</div>
@@ -96,25 +97,31 @@
 					<div class="col-sm-2">
 						<h:inputText class="form-control" id="email"
 							placeholer="Enter e-mail" value="#{regBean.email}">
-							<f:validateLength minimum="6" maximum="25"/>
+							<f:validateLength minimum="6" maximum="25" />
 							<f:validator validatorId="validators.EmailValidator" />
 						</h:inputText>
 						<h:message for="email" class="errMsg"></h:message>
 					</div>
 				</div>
-				<em>Password must contain:</em><br></br>
-				<em> - at least one digit</em><br></br>
-				<em> - at least a lower case letter</em><br></br>
-				<em> - at least an upper case letter</em><br></br>
-				<em> - at least a special character: @#$%^&amp;+=</em><br></br>
-				<em> ! no whitespace allowed !</em><br></br>
+				<em>Password must contain:</em>
+				<br></br>
+				<em> - at least one digit</em>
+				<br></br>
+				<em> - at least a lower case letter</em>
+				<br></br>
+				<em> - at least an upper case letter</em>
+				<br></br>
+				<em> - at least a special character: @#$%^&amp;+=</em>
+				<br></br>
+				<em> ! no whitespace allowed !</em>
+				<br></br>
 				<div class="form-group text-center">
 					<h:outputLabel class="control-label col-sm-5" for="password"
 						value="*Password:"></h:outputLabel>
 					<div class="col-sm-2">
 						<h:inputSecret class="form-control" id="password"
 							placeholer="Enter password" value="#{regBean.password}">
-							<f:validateLength minimum="6" maximum="20"/>
+							<f:validateLength minimum="6" maximum="20" />
 							<f:validator validatorId="validators.PasswordValidator"></f:validator>
 						</h:inputSecret>
 					</div>

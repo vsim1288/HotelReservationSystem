@@ -19,7 +19,7 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
-	
+
 	<navigation-rule>
 		<from-view-id>/pages/commonLayout.xhtml</from-view-id>
 		<navigation-case>
