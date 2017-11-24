@@ -7,7 +7,6 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	<!-- xmlns:m="http://code.google.com/p/gmaps4jsf/"-->
 
 <h:head>
 	<meta content="ISO-8859-2"></meta>
@@ -16,9 +15,8 @@
 		src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 	<link rel='stylesheet'
 		href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />
-	<script type="text/javascript"
-		src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false">
-	</script>
+	<script src="http://maps.google.com/maps/api/js?sensor=true|false"
+		type="text/javascript"></script>
 	<title>Welcome</title>
 </h:head>
 <h:body>
@@ -38,13 +36,13 @@
 			<h:panelGroup id="navMenu" layout="block">
 				<h:form>
 					<ul class="nav navbar-nav col-sm-6 text-center">
-						<li class="active"><h:commandLink value="Home"
+						<li><h:commandLink value="Home"
 								action="#{navBean.getPage('home')}"></h:commandLink></li>
 						<li><h:commandLink value="Booking"
 								action="#{navBean.getPage('booking')}"></h:commandLink></li>
 						<li><h:commandLink value="Gallery"
 								action="#{navBean.getPage('gallery')}"></h:commandLink></li>
-						<li><h:commandLink value="Contact"
+						<li class="active"><h:commandLink value="Contact"
 								action="#{navBean.getPage('contact')}"></h:commandLink></li>
 						<li><h:commandLink value="Logout"
 								action="#{loginBean.logout}"></h:commandLink></li>
@@ -66,17 +64,11 @@
 		</h3>
 		<br></br>
 		<h3>GoogleMaps location</h3>
-<!--
-		<f:view>
-			<h:form id="form">
-				<m:map zoom="16" width="700px" height="500px" address="Cluj-Napoca">
-					<m:mapControl name="GLargeMapControl"
-						position="G_ANCHOR_BOTTOM_LEFT" />
-					<m:mapControl name="GMapTypeControl" />
-					<m:htmlInformationWindow htmlText="White house"></m:htmlInformationWindow>
-				</m:map>
-			</h:form>
-		</f:view>-->
+
+		<h:panelGroup class="text-center" id="gMapDiv" layout="block">
+			<p:gmap center="46.771210, 23.623635	" zoom="15" type="hybrid"
+				style="width:inherit;height:400px" model="#{mapBean.model}"/>
+		</h:panelGroup>
 	</h:panelGroup>
 </h:body>
 </html>
