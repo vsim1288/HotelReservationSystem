@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 @ManagedBean(name = "bookingBean")
 @SessionScoped
@@ -19,7 +21,7 @@ public class BookingBean implements Serializable {
 	private String numberOfPeople;
 	private String numberOfRooms;
 	private String status;
-	
+
 	@PostConstruct
 	public void init() {
 		status = "No error";
@@ -37,6 +39,7 @@ public class BookingBean implements Serializable {
 	 *            the checkIn to set
 	 */
 	public void setCheckIn(Date checkIn) {
+		System.out.println("checkin");
 		this.checkIn = checkIn;
 	}
 
@@ -101,7 +104,19 @@ public class BookingBean implements Serializable {
 	}
 
 	public void book() {
-		System.out.println(this);
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		if (checkIn == null || checkOut == null || numberOfPeople.equals("") || numberOfRooms.equals("")) {
+			context.addMessage(null, new FacesMessage("Error", "There are still empty fields left!"));
+			return;
+		}
+
+		if (checkIn.after(checkOut)) {
+			System.out.println("wrong dates");
+			context.addMessage(null, new FacesMessage("Error", "Check-in day or Check-out day is wrong!"));
+		}
+		
+		context.addMessage(null, new FacesMessage("Success", "Everything is okay!"));
 	}
 
 	/*

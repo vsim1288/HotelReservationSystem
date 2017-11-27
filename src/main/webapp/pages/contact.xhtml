@@ -52,22 +52,24 @@
 		</h:panelGroup> </nav>
 	</h:panelGroup>
 	<h:panelGroup id="wrapper" layout="block">
-		<h1>Contact</h1>
-		<h3>
-			Name: <em>Hotel Tristar</em>
-		</h3>
-		<h3>
-			Address: <em>Address</em>
-		</h3>
-		<h3>
-			Phone: <em>1234567890</em>
-		</h3>
-		<br></br>
-		<h3>GoogleMaps location</h3>
+		<h:panelGroup id="contactGroup" layout="block">
+			<h1>Contact</h1>
+			<h3>
+				Name: <em>Hotel Tristar</em>
+			</h3>
+			<h3>
+				Address: <em>Address</em>
+			</h3>
+			<h3>
+				Phone: <em>1234567890</em>
+			</h3>
+			<br></br>
+			<h3>GoogleMaps location</h3>
+		</h:panelGroup>
 
 		<h:panelGroup class="text-center" id="gMapDiv" layout="block">
 			<p:gmap center="46.771210, 23.623635	" zoom="15" type="hybrid"
-				style="width:inherit;height:400px" model="#{mapBean.model}"/>
+				style="width:inherit;height:400px" model="#{mapBean.model}" />
 		</h:panelGroup>
 	</h:panelGroup>
 </h:body>
