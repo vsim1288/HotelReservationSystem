@@ -90,14 +90,14 @@ public class LoginBean implements Serializable {
 
 				return "ok";
 			} catch (Exception e) {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Incorrect Username and Password",
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Incorrect Username or Password",
 						"Please enter correct username and Password"));
 
 				return null;
 			}
 		} else {
 			FacesContext.getCurrentInstance().addMessage("loginForm:loginMsg",
-					new FacesMessage("Incorrect Username and Password", "Please enter correct username and Password"));
+					new FacesMessage("Incorrect Username or Password", "Please enter correct username and Password"));
 			return null;
 		}
 	}

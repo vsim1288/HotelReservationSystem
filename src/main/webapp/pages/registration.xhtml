@@ -48,7 +48,7 @@
 						<h:inputText class="form-control" id="firstName"
 							placeholer="Enter first name" value="#{regBean.firstName}">
 							<f:validateLength minimum="3" maximum="15" />
-							<f:validator validatorId="validators.FirstNameValidator" />>
+							<f:validator validatorId="validators.FirstNameValidator" />
 						</h:inputText>
 						<h:message for="firstName" class="errMsg"></h:message>
 					</div>

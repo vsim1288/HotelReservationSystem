@@ -6,7 +6,6 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
@@ -16,10 +15,8 @@
 		src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 	<link rel='stylesheet'
 		href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />
-	<script type="text/javascript"
-		src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false">
-		
-	</script>
+
+
 	<title>Welcome</title>
 </h:head>
 <h:body>
@@ -62,22 +59,29 @@
 				the information to help us get the best choices for your stay</h5>
 			<form id="bookingForm" class="form-inline">
 				<h:panelGroup class="form-group" layout="block">
-					<label class="control-label col-sm-offset-1 col-sm-3">Check-in</label>
-					<label class="control-label col-sm-offset-3 col-sm-4">Check-out</label>
+					<label for="checkInCalendar"
+						class="control-label col-sm-offset-1 col-sm-3">Check-in</label>
+					<label for="checkOutCalendar"
+						class="control-label col-sm-offset-3 col-sm-4">Check-out</label>
 
 					<h:panelGroup class="col-sm-offset-1 col-sm-2" layout="block">
-						<p:calendar id="checkInCalendar" value="#{calendar.date}" />
+						<p:calendar id="checkInCalendar" value="#{bookingBean.checkIn}">
+							
+						</p:calendar>
 					</h:panelGroup>
 					<h:panelGroup class="col-sm-offset-4 col-sm-2" layout="block">
-						<p:calendar id="checkOutCalendar" value="#{calendar.date}" />
+						<p:calendar id="checkOutCalendar" value="#{bookingBean.checkOut}">
+							
+						</p:calendar>
 					</h:panelGroup>
 				</h:panelGroup>
 				<br></br> <br></br>
 				<h:panelGroup class="form-group" layout="block">
-					<label class="control-label col-sm-1 col-sm-offset-3">People</label>
+					<label for="peopleCombobox"
+						class="control-label col-sm-1 col-sm-offset-3">People</label>
 					<h:panelGroup class="col-sm-1 col-sm-offset-2" layout="block">
-						<p:selectOneMenu id="peopleCombobox" value="#{select.number}"
-							style="width:100px">
+						<p:selectOneMenu id="peopleCombobox"
+							value="#{bookingBean.numberOfPeople}" style="width:100px">
 							<f:selectItem itemLabel="1" itemValue="1" />
 							<f:selectItem itemLabel="2" itemValue="2" />
 							<f:selectItem itemLabel="3" itemValue="3" />
@@ -88,10 +92,11 @@
 				</h:panelGroup>
 				<br></br> <br></br>
 				<h:panelGroup class="form-group" layout="block">
-					<label class="control-label col-sm-1 col-sm-offset-3">Rooms</label>
+					<label for="roomCombobox"
+						class="control-label col-sm-1 col-sm-offset-3">Rooms</label>
 					<h:panelGroup class="col-sm-1 col-sm-offset-2" layout="block">
-						<p:selectOneMenu id="roomCombobox" value="#{select.number}"
-							style="width:100px">
+						<p:selectOneMenu id="roomCombobox"
+							value="#{bookingBean.numberOfRooms}" style="width:100px">
 							<f:selectItem itemLabel="1" itemValue="1" />
 							<f:selectItem itemLabel="2" itemValue="2" />
 							<f:selectItem itemLabel="3" itemValue="3" />
@@ -100,15 +105,16 @@
 						</p:selectOneMenu>
 					</h:panelGroup>
 				</h:panelGroup>
-				<br></br><br></br>
+				<br></br> <br></br>
 				<h:panelGroup class="text-center" layout="block">
-					<h:commandButton class="btn btn-default"
-						value="Check" action="#{bookingBean.book}" update="checker"></h:commandButton>
+					<h:commandButton class="btn btn-default" value="Check"
+						action="#{bookingBean.book}">
+					</h:commandButton>
 				</h:panelGroup>
 			</form>
 		</h:panelGroup>
-		<h:panelGroup layout="block">
-			<h:outputText id="checkerText" value="#{booking.status}"/> 
+		<h:panelGroup id="checkerDiv" layout="block">
+			<h:message id="checkerText" value="#{bookingBean.status}"></h:message>
 		</h:panelGroup>
 	</h:panelGroup>
 </h:body>
