@@ -1,5 +1,7 @@
 package managedBeans;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -10,7 +12,11 @@ import org.primefaces.model.map.Marker;
 
 @ManagedBean(name="mapBean")
 @ViewScoped
-public class MapBean {
+public class MapBean implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4837266299746887231L;
 	private MapModel model = new DefaultMapModel();
 
 	public MapBean() {
