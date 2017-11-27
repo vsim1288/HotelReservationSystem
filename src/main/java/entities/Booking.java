@@ -19,8 +19,8 @@ public class Booking {
 	@EmbeddedId
 	private BookingCompositeKey roomIdStartDate;
 
-	@Column(name = "EndDate")
-	@Temporal(value = TemporalType.TIMESTAMP)
+	@Column(name = "EndDate", updatable = false)
+	@Temporal(value = TemporalType.DATE)
 	private Date endDate;
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -65,19 +65,19 @@ public class Booking {
 		this.endDate = endDate;
 	}
 
-	/**
-	 * @return the username
-	 */
-	public User getUsername() {
-		return username;
-	}
-
-	/**
-	 * @param username
-	 *            the username to set
-	 */
-	public void setUsername(User username) {
-		this.username = username;
-	}
+//	/**
+//	 * @return the username
+//	 */
+//	public User getUsername() {
+//		return username;
+//	}
+//
+//	/**
+//	 * @param username
+//	 *            the username to set
+//	 */
+//	public void setUsername(User username) {
+//		this.username = username;
+//	}
 
 }

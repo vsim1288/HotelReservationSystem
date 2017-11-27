@@ -27,31 +27,33 @@
 		<h1 class="text-center">Hotel Tristar</h1>
 	</h:panelGroup>
 	<h:panelGroup class='container' id="navbarDiv" layout="block">
-		<nav class="navbar navbar-default"> <h:panelGroup
-			class="container-fluid" layout="block">
-			<h:panelGroup class="navbar-header" layout="block">
-				<a class="navbar-brand">*** Tristar ***</a>
+		<nav class="navbar navbar-default">
+			<h:panelGroup class="container-fluid" layout="block">
+				<h:panelGroup class="navbar-header" layout="block">
+					<a class="navbar-brand">*** Tristar ***</a>
+				</h:panelGroup>
+				<h:panelGroup id="navMenu" layout="block">
+					<h:form>
+						<ul class="nav navbar-nav col-sm-6 text-center">
+							<li><h:commandLink value="Home"
+									action="#{navBean.getPage('home')}"></h:commandLink></li>
+							<li><h:commandLink value="Booking"
+									action="#{navBean.getPage('booking')}"></h:commandLink></li>
+							<li><h:commandLink value="Gallery"
+									action="#{navBean.getPage('gallery')}"></h:commandLink></li>
+							<li><h:commandLink value="Contact"
+									action="#{navBean.getPage('contact')}"></h:commandLink></li>
+							<li><h:commandLink value="Logout"
+									action="#{loginBean.logout}"></h:commandLink></li>
+						</ul>
+					</h:form>
+				</h:panelGroup>
 			</h:panelGroup>
-			<h:panelGroup id="navMenu" layout="block">
-				<h:form>
-					<ul class="nav navbar-nav col-sm-6 text-center">
-						<li class="active"><h:commandLink value="Home"
-								action="#{navBean.getPage('home')}"></h:commandLink></li>
-						<li><h:commandLink value="Booking"
-								action="#{navBean.getPage('booking')}"></h:commandLink></li>
-						<li><h:commandLink value="Gallery"
-								action="#{navBean.getPage('gallery')}"></h:commandLink></li>
-						<li><h:commandLink value="Contact"
-								action="#{navBean.getPage('contact')}"></h:commandLink></li>
-						<li><h:commandLink value="Logout"
-								action="#{loginBean.logout}"></h:commandLink></li>
-					</ul>
-				</h:form>
-			</h:panelGroup>
-		</h:panelGroup> </nav>
+		</nav>
 	</h:panelGroup>
 	<h:panelGroup id="wrapper" layout="block">
 		<h1>Oops, something went wrong...</h1>
+		<!--<h3>#{error.statusCode}</h3>-->
 	</h:panelGroup>
 </h:body>
 </html>

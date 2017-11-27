@@ -41,13 +41,13 @@ public class PhotoCRUD implements PhotoDAO {
 
 	@Override
 	public Photo findByPhotoName(Photo Photo) {
-
+		
 		return null;
 	}
 
 	@Override
 	public Photo insertPhoto(Photo Photo) {
-
+		
 		return null;
 	}
 

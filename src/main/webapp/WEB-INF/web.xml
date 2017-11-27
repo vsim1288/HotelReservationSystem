@@ -12,6 +12,11 @@
 		<param-value>Development</param-value>
 	</context-param>
 
+	<context-param>
+		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-value>client</param-value>
+	</context-param>
+
 	<!-- Welcome page -->
 	<welcome-file-list>
 		<welcome-file>/pages/index.xhtml</welcome-file>

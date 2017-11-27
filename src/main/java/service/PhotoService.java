@@ -20,8 +20,6 @@ public class PhotoService implements PhotoServiceInterface {
 
 	@Override
 	public List<Photo> getAll() {	
-		System.out.println("photoservice");
-		
 		return photoCRUD.findAll();
 	}
 

@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 import entities.Photo;
@@ -24,8 +23,6 @@ public class ImageBean implements Serializable {
     public void init() {
         PhotoService photoService = new PhotoService();
         images = photoService.getAll();
-        
-        System.out.println(images.size());
     }
  
     public List<Photo> getImages() {

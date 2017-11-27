@@ -18,7 +18,7 @@ public class BookingCompositeKey implements Serializable {
 	@Column(name="RoomId")
 	private Integer roomId;
 	@Column(name="StartDate")
-	@Temporal(value=TemporalType.TIMESTAMP)
+	@Temporal(value = TemporalType.DATE)
 	private Date startDate;
 	
 	public BookingCompositeKey() {
