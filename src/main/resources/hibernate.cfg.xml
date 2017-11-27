@@ -19,9 +19,12 @@
 		<property name="hbm2ddl.auto">update</property>
 
 		<!-- Mapping With Model Class Containing Annotations -->
-		<mapping class="entities.User" />
-		<mapping class="entities.Role" />
-		<mapping class="entities.UserInformation" />
+		<mapping class="entities.User"/>
+		<mapping class="entities.Role"/>
+		<mapping class="entities.UserInformation"/>
 		<mapping class="entities.Photo"/>
+		<mapping class="entities.Booking"/>
+		<mapping class="entities.RoomTypes"/>
+		<mapping class="entities.Rooms"/>
 	</session-factory>
 </hibernate-configuration>

@@ -20,8 +20,6 @@ public class SessionFilter implements Filter {
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -37,7 +35,7 @@ public class SessionFilter implements Filter {
 			System.out.println(reqURI + " " + session.getAttribute("username"));
 			if (reqURI.indexOf("/pages/index.xhtml") >= 0
 					&& session.getAttribute("username") != null) {
-				res.sendRedirect("/pages/commonLayout.xhtml");
+				res.sendRedirect("/pages/home.xhtml");
 			}
 			
 			if (reqURI.indexOf("/pages/index.xhtml") >= 0
@@ -50,7 +48,7 @@ public class SessionFilter implements Filter {
 				res.sendRedirect("/pages/index.xhtml");
 			}
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			((HttpServletResponse) response).sendRedirect("/pages/error.xhtml");
 		}
 
 	}

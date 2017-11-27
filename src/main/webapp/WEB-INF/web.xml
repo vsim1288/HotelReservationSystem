@@ -4,7 +4,7 @@
 	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
 
-	<display-name>HotelReservationSystem</display-name>
+	<display-name>HotelTristar</display-name>
 
 	<!-- Change to "Production" when you are ready to deploy -->
 	<context-param>
@@ -41,6 +41,20 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
+
+	<!-- Redirect if errors detected -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/pages/error.xhtml</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/pages/error.xhtml</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/pages/error.xhtml</location>
+	</error-page>
 
 	<servlet>
 		<servlet-name>jersey-serlvet</servlet-name>

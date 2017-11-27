@@ -27,6 +27,7 @@ public class UserCRUD implements UserDAO {
 			if ((userFound = session.get(User.class, user.getUsername())) != null) {
 				Hibernate.initialize(userFound.getRole());
 				Hibernate.initialize(userFound.getUserInfo());
+				Hibernate.initialize(userFound.getBookingRecords());
 				
 				if (user.getUsername().equals(userFound.getUsername())
 						&& user.getPassword().equals(userFound.getPassword())) {

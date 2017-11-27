@@ -1,5 +1,8 @@
 package entities;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -24,6 +28,8 @@ public class User {
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="Username")
 	private UserInformation userInfo;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "username", cascade = CascadeType.ALL)
+	private List<Booking> bookingRecords = new LinkedList<Booking>();
 	
 	public String getUsername() {
 		return username;
@@ -67,4 +73,20 @@ public class User {
 	public void setUserInfo(UserInformation userInfo) {
 		this.userInfo = userInfo;
 	}
+
+	/**
+	 * @return the bookingRecords
+	 */
+	public List<Booking> getBookingRecords() {
+		return bookingRecords;
+	}
+
+	/**
+	 * @param bookingRecords the bookingRecords to set
+	 */
+	public void setBookingRecords(List<Booking> bookingRecords) {
+		this.bookingRecords = bookingRecords;
+	}
+	
+	
 }

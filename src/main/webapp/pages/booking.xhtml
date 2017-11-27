@@ -12,6 +12,8 @@
 	<meta content="ISO-8859-2"></meta>
 	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script
 		src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 	<link rel='stylesheet'
 		href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />
@@ -30,29 +32,28 @@
 		<h1 class="text-center">Hotel Tristar</h1>
 	</h:panelGroup>
 	<h:panelGroup class='container' id="navbarDiv" layout="block">
-		<nav class="navbar navbar-default">
-			<h:panelGroup class="container-fluid" layout="block">
-				<h:panelGroup class="navbar-header" layout="block">
-					<a class="navbar-brand">*** Tristar ***</a>
-				</h:panelGroup>
-				<h:panelGroup id="navMenu" layout="block">
-					<h:form>
-						<ul class="nav navbar-nav col-sm-6 text-center">
-							<li><h:commandLink value="Home"
-									action="#{navBean.getPage('home')}"></h:commandLink></li>
-							<li class="active"><h:commandLink value="Booking"
-									action="#{navBean.getPage('booking')}"></h:commandLink></li>
-							<li><h:commandLink value="Gallery"
-									action="#{navBean.getPage('gallery')}"></h:commandLink></li>
-							<li><h:commandLink value="Contact"
-									action="#{navBean.getPage('contact')}"></h:commandLink></li>
-							<li><h:commandLink value="Logout"
-									action="#{loginBean.logout}"></h:commandLink></li>
-						</ul>
-					</h:form>
-				</h:panelGroup>
+		<nav class="navbar navbar-default"> <h:panelGroup
+			class="container-fluid" layout="block">
+			<h:panelGroup class="navbar-header" layout="block">
+				<a class="navbar-brand">*** Tristar ***</a>
 			</h:panelGroup>
-		</nav>
+			<h:panelGroup id="navMenu" layout="block">
+				<h:form>
+					<ul class="nav navbar-nav col-sm-6 text-center">
+						<li><h:commandLink value="Home"
+								action="#{navBean.getPage('home')}"></h:commandLink></li>
+						<li class="active"><h:commandLink value="Booking"
+								action="#{navBean.getPage('booking')}"></h:commandLink></li>
+						<li><h:commandLink value="Gallery"
+								action="#{navBean.getPage('gallery')}"></h:commandLink></li>
+						<li><h:commandLink value="Contact"
+								action="#{navBean.getPage('contact')}"></h:commandLink></li>
+						<li><h:commandLink value="Logout"
+								action="#{loginBean.logout}"></h:commandLink></li>
+					</ul>
+				</h:form>
+			</h:panelGroup>
+		</h:panelGroup> </nav>
 	</h:panelGroup>
 	<h:panelGroup id="wrapper" layout="block">
 		<h:outputScript library="primefaces" name="jquery/jquery.js"
