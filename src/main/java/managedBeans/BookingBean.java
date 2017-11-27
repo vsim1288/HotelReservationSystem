@@ -1,13 +1,16 @@
 package managedBeans;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.WebResource;
 
 @ManagedBean(name = "bookingBean")
 @SessionScoped
@@ -116,7 +119,29 @@ public class BookingBean implements Serializable {
 			context.addMessage(null, new FacesMessage("Error", "Check-in day or Check-out day is wrong!"));
 		}
 		
-		context.addMessage(null, new FacesMessage("Success", "Everything is okay!"));
+		if(numberOfPeople.compareTo(numberOfRooms) < 0) {
+			context.addMessage(null, new FacesMessage("Error", "Too few people for selected rooms!"));
+		}
+		
+		String path = "http://localhost:8080/rest/user/insert/" + checkIn + "/" + checkOut + "/" + numberOfPeople + "/" + numberOfRooms;
+		Client client = Client.create();
+		WebResource webResource = client.resource(path.toString());
+		ClientResponse response = webResource.accept("application/json").put(ClientResponse.class);
+		
+		if (response.getStatus() == 200) {
+			try {
+//				JSONObject myObject = response.getEntity(JSONObject.class);
+//				ObjectMapper mapper = new ObjectMapper();
+//				mapper.configure(Feature.FAIL_ON_EMPTY_BEANS, false);
+//				Booking returnedBooking = mapper.readValue(myObject.toString(), Booking.class);
+
+				context.addMessage(null, new FacesMessage("Booking successful", "See you on the booked day!"));
+			} catch (Exception e) {
+				context.addMessage(null, new FacesMessage("Error", "Something went wrong! Please try again later!"));
+			}
+		} 
+		
+		context.addMessage(null, new FacesMessage("Sorry", "There is no room left!"));
 	}
 
 	/*
