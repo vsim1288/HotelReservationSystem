@@ -23,7 +23,7 @@ public class PasswordValidator implements Validator {
 	
 	@Override
 	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
-		matcher = pattern.matcher(value.toString());
+		matcher = pattern.matcher((CharSequence) value);
 		if(!matcher.find()){
 
 			FacesMessage msg =

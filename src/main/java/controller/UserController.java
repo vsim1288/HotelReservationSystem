@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -14,6 +16,15 @@ import service.UserService;
 public class UserController {
 	private UserService userService = new UserService();
 
+	@GET
+	@Path("/getAll")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getAll() {
+		List<User> userList = userService.list();
+		
+		return Response.status(200).entity(userList).build();
+	}
+	
 	@GET
 	@Path("/get/{username}/{password}")
 	@Produces(MediaType.APPLICATION_JSON)

@@ -25,10 +25,10 @@ public class User {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="roleId")
 	private Role role;
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="Username")
 	private UserInformation userInfo;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "username", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "username", cascade = CascadeType.ALL)
 	private List<Booking> bookingRecords = new LinkedList<Booking>();
 	
 	public String getUsername() {

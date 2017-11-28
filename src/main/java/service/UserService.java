@@ -1,6 +1,5 @@
 package service;
 
-import java.util.Iterator;
 import java.util.List;
 
 import dao.UserCRUD;
@@ -10,16 +9,13 @@ public class UserService implements UserServiceInterface {
 	private UserCRUD userCRUD = new UserCRUD();
 
 	@Override
-	public User save(User user) {
-		List<User> userList = userCRUD.findAll();
-		Iterator<User> it = userList.iterator();
-		
-		while(it.hasNext()) {
-			if(it.next().getUsername().equals(user.getUsername())) {
-				return null;
-			}
+	public boolean save(User user) {
+		System.out.println("userService");
+				
+		if(userCRUD.findByUsername(user.getUsername()) != null) {
+			return false;
 		}
-		
+	
 		return userCRUD.insertUser(user);
 	}
 
@@ -30,7 +26,7 @@ public class UserService implements UserServiceInterface {
 
 	@Override
 	public List<User> list() {
-		return null;
+		return userCRUD.findAll();
 	}
 
 	@Override

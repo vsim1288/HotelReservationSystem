@@ -118,7 +118,8 @@ public class RegistrationBean implements Serializable {
 		this.password = password;
 	}
 
-	public String validate() {
+	public void validate() {
+		FacesContext context = FacesContext.getCurrentInstance();
 		User user = new User();
 		Role role = new Role();
 		UserInformation userInfo = new UserInformation();
@@ -138,13 +139,12 @@ public class RegistrationBean implements Serializable {
 
 		user.setUserInfo(userInfo);
 		user.setRole(role);
-
-		if (userService.save(user) != null) {
-			return "ok";
+		System.out.println("register");
+		if (userService.save(user)) {
+			context.addMessage(null, new FacesMessage("Success", "Username created!"));
+			return;
 		}
 
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Something went wrong!"));
-		
-		return null;
+		context.addMessage(null, new FacesMessage("Sorry", "Something went wrong! Please try again later"));
 	}
 }

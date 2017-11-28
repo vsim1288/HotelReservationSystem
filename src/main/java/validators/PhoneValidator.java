@@ -12,7 +12,7 @@ import javax.faces.validator.ValidatorException;
 
 @FacesValidator("validators.PhoneValidator")
 public class PhoneValidator implements Validator {
-	public static final String PHONE_PATTERN = "[0-9]";
+	public static final String PHONE_PATTERN = "[0-9]*";
 
 	private Pattern pattern;
 	private Matcher matcher;

@@ -5,7 +5,7 @@ import java.util.List;
 import entities.User;
 
 public interface UserServiceInterface {
-	public User save(User user);
+	public boolean save(User user);
 
 	public User get(User user);
 	

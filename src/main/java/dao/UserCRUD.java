@@ -58,14 +58,16 @@ public class UserCRUD implements UserDAO {
 		try {
 			session.beginTransaction();
 			
-			Query query = session.createQuery("from users");
+			Query query = session.createQuery("select u from User u");
 			
 			userList = query.getResultList();
 			
 			session.getTransaction().commit();
-			
+			System.out.println("userCRUD");
 			return userList;
 		} catch(Exception e) {
+			System.out.println("FindALL ERROR: " + e.getMessage());
+			
 			session.getTransaction().rollback();
 			
 			return null;
@@ -75,7 +77,7 @@ public class UserCRUD implements UserDAO {
 	}
 
 	@Override
-	public User insertUser(User user) {
+	public boolean insertUser(User user) {
 		Session session = HibernateConfig.buildSessionFactory().openSession();
 		
 		try {
@@ -85,11 +87,11 @@ public class UserCRUD implements UserDAO {
 			
 			session.getTransaction().commit();
 			
-			return user;
+			return true;
 		} catch(Exception e) {
 			session.getTransaction().rollback();
 			
-			return null;
+			return false;
 		} finally {
 			session.close();
 		}
@@ -116,9 +118,13 @@ public class UserCRUD implements UserDAO {
 			Query<User> query = session.createQuery("select u from User u where u.username = :username");
 			query.setParameter("username", username);
 			System.out.println(username);
-			User user = (User) query.getSingleResult();
+			User user = query.getSingleResult();
 			
 			session.getTransaction().commit();
+			
+			if(user == null) {
+				return null;
+			} 
 			
 			return user;
 		} catch (Exception e) {

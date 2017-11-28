@@ -4,11 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<script
-		src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 	<script
 		src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 	<link rel='stylesheet'
@@ -41,6 +40,7 @@
 			<h:messages id="message" globalOnly="true"></h:messages>
 
 			<h:form id="regFormId" class="form-horizontal">
+				<p:growl id="statusGrowl" showDetail="true" sticky="true"/>
 				<div class="form-group text-center">
 					<h:outputLabel class="control-label col-sm-5" for="firstName"
 						value="*First Name:"></h:outputLabel>
@@ -122,14 +122,13 @@
 						<h:inputSecret class="form-control" id="password"
 							placeholer="Enter password" value="#{regBean.password}">
 							<f:validateLength minimum="6" maximum="20" />
-							<f:validator validatorId="validators.PasswordValidator"></f:validator>
 						</h:inputSecret>
 					</div>
 				</div>
 				<br></br>
 
 				<h:commandButton class="btn btn-default" value="Register"
-					action="#{regBean.validate}"></h:commandButton>
+					action="#{regBean.validate}" update="growl"></h:commandButton>
 
 				<br></br>
 
