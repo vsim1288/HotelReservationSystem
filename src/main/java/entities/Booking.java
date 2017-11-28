@@ -79,7 +79,7 @@ public class Booking {
 //	public User getUsername() {
 //		return username;
 //	}
-//
+
 	/**
 	 * @param username
 	 *            the username to set
