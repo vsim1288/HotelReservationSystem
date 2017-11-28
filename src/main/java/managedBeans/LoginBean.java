@@ -20,6 +20,7 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
 import entities.User;
+import util.HashPassword;
 
 @ManagedBean(name = "loginBean")
 @SessionScoped
@@ -68,7 +69,7 @@ public class LoginBean implements Serializable {
 	}
 
 	public String login() throws JsonParseException, JsonMappingException, IOException {
-		String path = "http://localhost:8080/rest/user/get/" + username + "/" + password;
+		String path = "http://localhost:8080/rest/user/get/" + username + "/" + HashPassword.hashPassword(password);
 		Client client = Client.create();
 		WebResource webResource = client.resource(path.toString());
 		ClientResponse response = webResource.accept("application/json").get(ClientResponse.class);

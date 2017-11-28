@@ -1,6 +1,8 @@
 package managedBeans;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -10,6 +12,7 @@ import entities.Role;
 import entities.User;
 import entities.UserInformation;
 import service.UserService;
+import util.HashPassword;
 
 @ManagedBean(name = "regBean")
 @SessionScoped
@@ -118,7 +121,7 @@ public class RegistrationBean implements Serializable {
 		this.password = password;
 	}
 
-	public void validate() {
+	public void validate() throws UnsupportedEncodingException {
 		FacesContext context = FacesContext.getCurrentInstance();
 		User user = new User();
 		Role role = new Role();
@@ -134,7 +137,7 @@ public class RegistrationBean implements Serializable {
 		userInfo.setLastName(lastName);
 		userInfo.setPhone(phone);
 
-		user.setPassword(password);
+		user.setPassword(HashPassword.hashPassword(password));
 		user.setUsername(email);
 
 		user.setUserInfo(userInfo);

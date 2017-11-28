@@ -15,12 +15,10 @@ public class PhotoCRUD implements PhotoDAO {
 	public List<Photo> findAll() {
 		List<Photo> photoList;
 		Session session = HibernateConfig.buildSessionFactory().openSession();
-		System.out.println("photocrud");
 		try {
 			session.beginTransaction();
 			
 			Query<Photo> query = session.createQuery("from Photo");
-			System.out.println("getresultlist");
 			photoList = query.getResultList();
 			
 			session.getTransaction().commit();
