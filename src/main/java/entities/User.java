@@ -87,6 +87,15 @@ public class User {
 	public void setBookingRecords(List<Booking> bookingRecords) {
 		this.bookingRecords = bookingRecords;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "User [username=" + username + ", password=" + password + ", role=" + role + ", userInfo=" + userInfo
+				+ ", bookingRecords=" + bookingRecords + "]";
+	}
 	
 	
 }

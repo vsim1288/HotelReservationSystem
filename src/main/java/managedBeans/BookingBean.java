@@ -138,16 +138,18 @@ public class BookingBean implements Serializable {
 		if (checkIn.after(checkOut)) {
 			System.out.println("wrong dates");
 			context.addMessage(null, new FacesMessage("Error", "Check-in day or Check-out day is wrong!"));
+			return;
 		}
 
 		if (numberOfPeople.compareTo(numberOfRooms) < 0) {
 			context.addMessage(null, new FacesMessage("Error", "Too few people for selected rooms!"));
+			return;
 		}
 
 		System.out.println("set response");
 		String path = "http://localhost:8080/rest/booking/insert/"
 				+ (new SimpleDateFormat("yyyy-MM-dd").format(checkIn)) + "/"
-				+ (new SimpleDateFormat("yyyy-MM-dd").format(checkIn)) + "/" + numberOfPeople + "/" + numberOfRooms
+				+ (new SimpleDateFormat("yyyy-MM-dd").format(checkOut)) + "/" + numberOfPeople + "/" + numberOfRooms
 				+ "/" + loginBean.getUsername();
 		Client client = Client.create();
 		WebResource webResource = client.resource(path.toString());
@@ -156,19 +158,13 @@ public class BookingBean implements Serializable {
 
 		if (response.getStatus() == 200) {
 			try {
-				// JSONObject myObject = response.getEntity(JSONObject.class);
-				// ObjectMapper mapper = new ObjectMapper();
-				// mapper.configure(Feature.FAIL_ON_EMPTY_BEANS, false);
-				// Booking returnedBooking =
-				// mapper.readValue(myObject.toString(), Booking.class);
-
 				context.addMessage(null, new FacesMessage("Booking successful", "See you on the booked day!"));
 			} catch (Exception e) {
 				context.addMessage(null, new FacesMessage("Error", "Something went wrong! Please try again later!"));
 			}
+		} else {
+			context.addMessage(null, new FacesMessage("Sorry", "There are no rooms left!"));
 		}
-
-		context.addMessage(null, new FacesMessage("Sorry", "There is no room left!"));
 	}
 
 	/*

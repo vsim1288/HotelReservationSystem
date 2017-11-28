@@ -26,19 +26,23 @@ public class RoomsCRUD implements RoomsDAO {
 			session.beginTransaction();
 
 			System.out.println("prepare query");
-			Query<?> query = session.createQuery(
-					"select r.roomId, r.roomTypes, r.occupied from Rooms r, Booking b where r.roomId = b.roomId and endDate >= :checkIn and startDate >= :checkOut");
+			Query<?> query = session.createSQLQuery(
+					"select r.roomId, r.roomTypesId, r.occupied from Rooms r LEFT JOIN(select b.roomId from Booking b where b.endDate >= :checkIn AND b.startDate <= :checkOut AND (timestampdiff(day, b.startDate, :checkOut)*timestampdiff(day, :checkIn, b.endDate)) > 0) occupied ON r.roomID = occupied.RoomID where occupied.roomID IS NULL").addEntity(Rooms.class);
 			query.setDate("checkIn", checkIn);
 			query.setDate("checkOut", checkOut);
-			System.out.println(query.toString());
+			
 			System.out.println("getresult");
 			@SuppressWarnings("unchecked")
 			List<Rooms> roomsList = (List<Rooms>) query.getResultList();
 
+			for (Rooms elem : roomsList) {
+				System.out.println(elem.getRoomId());
+			}
+
 			return roomsList;
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			
+			System.out.println("Error: " + e.getMessage());
+
 			return new LinkedList<Rooms>();
 		}
 	}

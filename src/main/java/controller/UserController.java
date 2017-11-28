@@ -7,7 +7,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import entities.Role;
 import entities.User;
 import service.UserService;
 
@@ -37,5 +36,20 @@ public class UserController {
 		}
 
 		return Response.status(404).entity("fail").build();
+	}
+	
+	@GET
+	@Path("/getByUsername/{username}") 
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getByUsername(@PathParam(value="username") String username) {
+		try {
+			User user = userService.getByUsername(username);
+			System.out.println("user: " + user.getPassword());
+			
+			return Response.status(200).entity(user).build();
+		} catch(Exception e) {
+			
+			return null;
+		}
 	}
 }

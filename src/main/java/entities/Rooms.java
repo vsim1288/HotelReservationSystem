@@ -62,6 +62,14 @@ public class Rooms {
 	public void setOccupied(boolean occupied) {
 		this.occupied = occupied;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Rooms [roomId=" + roomId + ", roomTypes=" + roomTypes + ", occupied=" + occupied + "]";
+	}
 	
 	
 }

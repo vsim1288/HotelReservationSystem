@@ -65,6 +65,14 @@ public class Booking {
 		this.endDate = endDate;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Booking [roomIdStartDate=" + roomIdStartDate + ", endDate=" + endDate + ", username=" + username + "]";
+	}
+
 //	/**
 //	 * @return the username
 //	 */
@@ -72,12 +80,12 @@ public class Booking {
 //		return username;
 //	}
 //
-//	/**
-//	 * @param username
-//	 *            the username to set
-//	 */
-//	public void setUsername(User username) {
-//		this.username = username;
-//	}
+	/**
+	 * @param username
+	 *            the username to set
+	 */
+	public void setUsername(User username) {
+		this.username = username;
+	}
 
 }

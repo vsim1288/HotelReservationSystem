@@ -104,4 +104,29 @@ public class UserCRUD implements UserDAO {
 	public boolean deleteUser(User user) {
 		return false;
 	}
+
+	@Override
+	public User findByUsername(String username) {
+		Session session = HibernateConfig.buildSessionFactory().openSession();
+		
+		try {
+			session.beginTransaction();
+			
+			@SuppressWarnings("unchecked")
+			Query<User> query = session.createQuery("select u from User u where u.username = :username");
+			query.setParameter("username", username);
+			System.out.println(username);
+			User user = (User) query.getSingleResult();
+			
+			session.getTransaction().commit();
+			
+			return user;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			
+			session.getTransaction().rollback();
+			
+			return null;
+		}
+	}
 }

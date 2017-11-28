@@ -34,7 +34,7 @@ public class BookingCRUD implements BookingDAO{
 	@Override
 	public boolean insertBooking(List<Booking> bookingList) {
 		Session session = HibernateConfig.buildSessionFactory().openSession();
-		
+		System.out.println("insertbooking");
 		try {
 			session.beginTransaction();
 			
@@ -48,6 +48,8 @@ public class BookingCRUD implements BookingDAO{
 			
 			return true;
 		} catch(Exception e) {
+			System.out.println(e.getMessage());
+			
 			session.getTransaction().rollback();
 			
 			return false;

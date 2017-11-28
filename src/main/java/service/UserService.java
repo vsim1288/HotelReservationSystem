@@ -40,8 +40,12 @@ public class UserService implements UserServiceInterface {
 
 	@Override
 	public void delete(long id) {
-		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public User getByUsername(String username) {
+		return userCRUD.findByUsername(username);
 	}
 
 }
