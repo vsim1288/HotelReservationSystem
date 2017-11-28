@@ -21,11 +21,17 @@ public class ImageBean implements Serializable {
     
     @PostConstruct
     public void init() {
-        PhotoService photoService = new PhotoService();
-        images = photoService.getAll();
+        
     }
  
     public List<Photo> getImages() {
+    	PhotoService photoService = new PhotoService();
+        images = photoService.getAll();
+        
+        for(Photo photo: images) {
+        	System.out.println(photo);
+        }
+    	
         return images;
     }
 }

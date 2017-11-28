@@ -57,8 +57,8 @@
 			<h1 id="galleryTitle" class="text-center">Gallery</h1>
 			<h:panelGroup class="text-center" id="slideshowDiv" layout="block">
 				<p:galleria id="galleriaS" panelWidth="805" panelHeight="400"
-					value="#{imagesView.images}" var="image" effect="slide"
-					transitionInterval="3000" cache="false">
+					value="#{imagesView.images}" var="image"
+					autoPlay="false" cache="false">
 					<p:graphicImage name="/images/#{image}" alt="#{image}" width="500"
 						height="350" cache="false" />
 				</p:galleria>

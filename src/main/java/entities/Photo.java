@@ -55,7 +55,6 @@ public class Photo implements Serializable {
 	
 	@Override
 	public String toString() {
-		System.out.println(photoName);
 		return photoName;
 	}
 }

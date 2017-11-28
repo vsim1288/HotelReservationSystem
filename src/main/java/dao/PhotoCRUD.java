@@ -21,11 +21,9 @@ public class PhotoCRUD implements PhotoDAO {
 			Query<Photo> query = session.createQuery("from Photo");
 			photoList = query.getResultList();
 			
-			session.getTransaction().commit();
+			System.out.println(photoList.size());
 			
-			for(Photo photo: photoList){
-				System.out.println(photo);
-			}
+			session.getTransaction().commit();
 			
 			return photoList;
 		} catch(Exception e) {
