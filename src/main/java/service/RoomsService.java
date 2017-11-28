@@ -1,6 +1,6 @@
 package service;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import dao.RoomsCRUD;
@@ -21,6 +21,7 @@ public class RoomsService implements RoomsServiceInterfaces {
 
 	@Override
 	public List<Rooms> getVacantRooms(Date checkIn, Date checkOut) {
+		System.out.println("roomservice");
 		return roomsCRUD.findVacantRooms(checkIn, checkOut);
 	}
 

@@ -1,6 +1,6 @@
 package dao;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,6 +17,7 @@ public class RoomsCRUD implements RoomsDAO {
 		return null;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public List<Rooms> findVacantRooms(Date checkIn, Date checkOut) {
 		Session session = HibernateConfig.buildSessionFactory().openSession();
@@ -24,14 +25,20 @@ public class RoomsCRUD implements RoomsDAO {
 		try {
 			session.beginTransaction();
 
+			System.out.println("prepare query");
 			Query<?> query = session.createQuery(
-					"select r.roomId, r.roomType, r.occupied from Rooms r, Booking b where r.roomId = b.roomId endDate >= :checkIn and startDate >= :checkOut");
-
+					"select r.roomId, r.roomTypes, r.occupied from Rooms r, Booking b where r.roomId = b.roomId and endDate >= :checkIn and startDate >= :checkOut");
+			query.setDate("checkIn", checkIn);
+			query.setDate("checkOut", checkOut);
+			System.out.println(query.toString());
+			System.out.println("getresult");
 			@SuppressWarnings("unchecked")
 			List<Rooms> roomsList = (List<Rooms>) query.getResultList();
 
 			return roomsList;
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			
 			return new LinkedList<Rooms>();
 		}
 	}

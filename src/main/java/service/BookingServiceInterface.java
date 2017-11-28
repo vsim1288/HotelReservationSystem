@@ -1,6 +1,6 @@
 package service;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import entities.Booking;
@@ -15,5 +15,6 @@ public interface BookingServiceInterface {
 
 	public void delete(long id);
 
-	List<Booking> save(Booking Booking, int numberOfPeople, int numberOfRooms, Date checkIn, Date checkOut);
+	boolean save(int numberOfPeople, int numberOfRooms, Date checkIn, Date checkOut,
+			String username);
 }

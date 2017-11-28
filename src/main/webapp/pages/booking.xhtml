@@ -66,12 +66,12 @@
 						class="control-label col-sm-offset-3 col-sm-4">Check-out</label>
 
 					<h:panelGroup class="col-sm-offset-1 col-sm-2" layout="block">
-						<p:calendar id="checkInCalendar" value="#{bookingBean.checkIn}">
+						<p:calendar id="checkInCalendar" value="#{bookingBean.checkIn}" pattern="yyyy-MM-dd">
 							<f:validateLength minimum="8" />
 						</p:calendar>
 					</h:panelGroup>
 					<h:panelGroup class="col-sm-offset-4 col-sm-2" layout="block">
-						<p:calendar id="checkOutCalendar" value="#{bookingBean.checkOut}">
+						<p:calendar id="checkOutCalendar" value="#{bookingBean.checkOut}" pattern="yyyy-MM-dd">
 							<f:validateLength minimum="8" />
 						</p:calendar>
 					</h:panelGroup>
@@ -112,7 +112,7 @@
 				<br></br>
 				<h:panelGroup class="text-center" layout="block">
 					<h:commandButton class="btn btn-default" value="Check"
-						actionListener="#{bookingBean.book}" update="growl">
+						action="#{bookingBean.book}" update="growl">
 					</h:commandButton>
 				</h:panelGroup>
 			</h:form>

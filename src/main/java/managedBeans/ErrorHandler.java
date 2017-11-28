@@ -7,20 +7,27 @@ import javax.faces.context.FacesContext;
 @ManagedBean(name="error")
 @RequestScoped
 public class ErrorHandler {
-	public String getStatusCode() {
-		System.out.println("statuscode: " + String.valueOf((Integer) FacesContext.getCurrentInstance().getExternalContext().getRequestMap()
-				.get("javax.servlet.error.status_code")));
-		
-		return String.valueOf((Integer) FacesContext.getCurrentInstance().getExternalContext().getRequestMap()
+	private String statusCode;
+	private String message;
+	private String reqURI;
+	
+	public String getStatusCode() {		
+		statusCode = String.valueOf((Integer) FacesContext.getCurrentInstance().getExternalContext().getRequestMap()
 				.get("javax.servlet.error.status_code"));
 
+		return statusCode;
 	}
 
-	public String getMessage() {
-		System.out.println("message:" + (String) FacesContext.getCurrentInstance().getExternalContext().getRequestMap()
-				.get("javax.servlet.error.message"));
-		
-		return (String) FacesContext.getCurrentInstance().getExternalContext().getRequestMap()
+	public String getMessage() {				
+		message = (String) FacesContext.getCurrentInstance().getExternalContext().getRequestMap()
 				.get("javax.servlet.error.message");
+		
+		return message;
+	}
+	
+	public String getReqURI() {
+		reqURI =  (String) FacesContext.getCurrentInstance().getExternalContext().getRequestMap().get("javax.servlet.error.request_uri");
+		
+		return reqURI;
 	}
 }

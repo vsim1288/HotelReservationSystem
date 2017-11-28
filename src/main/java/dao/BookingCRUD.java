@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -31,8 +32,26 @@ public class BookingCRUD implements BookingDAO{
 	}
 
 	@Override
-	public Booking insertBooking(Booking Booking) {
-		return null;
+	public boolean insertBooking(List<Booking> bookingList) {
+		Session session = HibernateConfig.buildSessionFactory().openSession();
+		
+		try {
+			session.beginTransaction();
+			
+			Iterator<Booking> it = bookingList.iterator();
+			
+			while(it.hasNext()) {
+				session.save(it.next());
+			}
+			
+			session.getTransaction().commit();
+			
+			return true;
+		} catch(Exception e) {
+			session.getTransaction().rollback();
+			
+			return false;
+		}
 	}
 
 	@Override
