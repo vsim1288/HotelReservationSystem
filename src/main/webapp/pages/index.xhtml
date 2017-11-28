@@ -5,13 +5,11 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 	<meta content="ISO-8859-2"></meta>
 	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-	<script
-		src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 	<script
 		src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 	<link rel='stylesheet'
@@ -19,8 +17,20 @@
 
 	<title>Hotel Tristar</title>
 </h:head>
-<body style="background-color:lightblue">
+<body style="background-color: lightblue">
 	<h:outputStylesheet name="style.css" library="stylesheets" />
+
+	<h:panelGroup id="indexMenu" layout="block">
+		<h:form id="indexForm">
+			<h:commandButton id="registerBtn" class="btn btn-default"
+				action="registration?faces-redirect=true" value="Register"></h:commandButton>
+				
+				<h:panelGroup id="registerMsg">Hit the Register button if you don't have an account yet! </h:panelGroup>
+		</h:form>
+		
+		
+	</h:panelGroup>
+
 	<div class="container" id="loginDiv">
 		<div class="row">
 			<div class="col-sm-offset-3 col-sm-10">
@@ -30,12 +40,12 @@
 		<br></br>
 
 		<h:form id="loginForm" class="form-horizontal">
-			<h:messages for="username" class="errMsg" id="loginMsg"></h:messages>
+			<p:growl id="indexGrowl" showDetail="true" sticky="true" />
 			<div class="form-group">
 				<label class="control-label col-sm-5" for="username">Username:</label>
 				<div class="col-sm-2">
 					<h:inputText class="form-control" name="username" id="username"
-						pt:placeholder="Enter username" required="true"
+						placeholder="Enter username" required="true"
 						value="#{loginBean.username}">
 					</h:inputText>
 				</div>
@@ -44,15 +54,13 @@
 				<label class="control-label col-sm-5" for="password">Password:</label>
 				<div class="col-sm-2">
 					<h:inputSecret class="form-control" name="password" id="password"
-						pt:placeholder="Enter password" required="true"
+						placeholder="Enter password" required="true"
 						value="#{loginBean.password}"></h:inputSecret>
 				</div>
 			</div>
 			<div class="form-group">
 				<h:commandButton class="btn btn-default col-sm-offset-5 col-sm-1"
 					value="Login" action="#{loginBean.login}"></h:commandButton>
-				<h:commandButton class="btn btn-default col-sm-1"
-					action="registration?faces-redirect=true" value="Register"></h:commandButton>
 			</div>
 		</h:form>
 	</div>

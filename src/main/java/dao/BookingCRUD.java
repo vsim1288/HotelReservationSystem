@@ -66,4 +66,29 @@ public class BookingCRUD implements BookingDAO{
 		return false;
 	}
 
+	@Override
+	public List<Booking> findAll(String username) {
+		Session session = HibernateConfig.buildSessionFactory().openSession();
+		
+		try {
+			session.beginTransaction();
+			
+			@SuppressWarnings("unchecked")
+			Query<Booking> query = session.createQuery("select b from Booking b where b.username = :username");
+			query.setParameter("username", username);
+			
+			List<Booking> bookingList = query.getResultList();
+
+			session.getTransaction().commit();
+			
+			return bookingList;
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+			
+			session.getTransaction().rollback();
+			
+			return null;
+		}
+	}
+
 }

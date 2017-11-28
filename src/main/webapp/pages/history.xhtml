@@ -1,22 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 	<meta content="ISO-8859-2"></meta>
 	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 	<script
-		src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-	<script
 		src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 	<link rel='stylesheet'
 		href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />
 
-	<title>Hotel Tristar</title>
+
+	<title>Welcome</title>
 </h:head>
 <h:body>
 	<h:outputStylesheet name="WelcomeStyle.css" library="stylesheets" />
@@ -37,7 +38,7 @@
 					<ul class="nav navbar-nav col-sm-6 text-center">
 						<li><h:commandLink value="Home"
 								action="#{navBean.getPage('home')}"></h:commandLink></li>
-						<li><h:commandLink value="Booking"
+						<li class="active"><h:commandLink value="Booking"
 								action="#{navBean.getPage('booking')}"></h:commandLink></li>
 						<li><h:commandLink value="Gallery"
 								action="#{navBean.getPage('gallery')}"></h:commandLink></li>
@@ -53,10 +54,20 @@
 		</h:panelGroup> </nav>
 	</h:panelGroup>
 	<h:panelGroup id="wrapper" layout="block">
-		<h1>Oops, something went wrong...</h1>
-		<h3>#{error.statusCode}</h3>
-		<h3>#{error.message}</h3>
-		<h3>#{error.reqURI}</h3>
+		<h1 id="bookingTitle">Booking</h1>
+		<p:dataTable var="car" value="#{historyBean.historyList}">
+			<p:column headerText="Check-in">
+				<h:outputText value="#{booking.checkIn}" />
+			</p:column>
+
+			<p:column headerText="Check-out">
+				<h:outputText value="#{booking.checkOut}" />
+			</p:column>
+
+			<p:column headerText="Number of people">
+				<h:outputText value="#{booking.numberOfPeople}" />
+			</p:column>
+		</p:dataTable>
 	</h:panelGroup>
 </h:body>
 </html>

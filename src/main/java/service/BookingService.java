@@ -110,4 +110,9 @@ public class BookingService implements BookingServiceInterface {
 
 	}
 
+	@Override
+	public List<Booking> getAll(String username) {
+		return bookingCRUD.findAll(username);
+	}
+
 }

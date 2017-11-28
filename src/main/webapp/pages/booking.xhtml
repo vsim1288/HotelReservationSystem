@@ -42,6 +42,8 @@
 								action="#{navBean.getPage('booking')}"></h:commandLink></li>
 						<li><h:commandLink value="Gallery"
 								action="#{navBean.getPage('gallery')}"></h:commandLink></li>
+						<li><h:commandLink value="My bookings"
+								action="{navBean.getPage('history')}"></h:commandLink></li>
 						<li><h:commandLink value="Contact"
 								action="#{navBean.getPage('contact')}"></h:commandLink></li>
 						<li><h:commandLink value="Logout"
@@ -58,7 +60,7 @@
 			<h5 id="bookingMessage" class="text-center">Please select all
 				the information to help us get the best choices for your stay</h5>
 			<h:form id="bookingForm" class="form-inline">
-				<p:growl id="statusGrowl" showDetail="true" sticky="true"/>
+				<p:growl id="statusGrowl" showDetail="true" sticky="true" />
 				<h:panelGroup class="form-group" layout="block">
 					<label for="checkInCalendar"
 						class="control-label col-sm-offset-1 col-sm-3">Check-in</label>
@@ -66,12 +68,14 @@
 						class="control-label col-sm-offset-3 col-sm-4">Check-out</label>
 
 					<h:panelGroup class="col-sm-offset-1 col-sm-2" layout="block">
-						<p:calendar id="checkInCalendar" value="#{bookingBean.checkIn}" pattern="yyyy-MM-dd">
+						<p:calendar id="checkInCalendar" value="#{bookingBean.checkIn}"
+							pattern="yyyy-MM-dd">
 							<f:validateLength minimum="8" />
 						</p:calendar>
 					</h:panelGroup>
 					<h:panelGroup class="col-sm-offset-4 col-sm-2" layout="block">
-						<p:calendar id="checkOutCalendar" value="#{bookingBean.checkOut}" pattern="yyyy-MM-dd">
+						<p:calendar id="checkOutCalendar" value="#{bookingBean.checkOut}"
+							pattern="yyyy-MM-dd">
 							<f:validateLength minimum="8" />
 						</p:calendar>
 					</h:panelGroup>

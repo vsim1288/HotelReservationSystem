@@ -10,6 +10,8 @@ public interface BookingServiceInterface {
 	public Booking get(Booking Booking);
 
 	public List<Booking> getAll();
+	
+	public List<Booking> getAll(String username);
 
 	public void update(long id, Booking Booking);
 
