@@ -9,14 +9,20 @@ import entities.Rooms;
 public class RoomsService implements RoomsServiceInterfaces {
 	RoomsCRUD roomsCRUD = new RoomsCRUD();
 	
+	/**
+	 * Not implemented
+	 */
 	@Override
 	public Rooms save(Rooms Rooms) {
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * Not implemented
+	 */
 	@Override
 	public Rooms get(Rooms Rooms) {
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
@@ -25,19 +31,28 @@ public class RoomsService implements RoomsServiceInterfaces {
 		return roomsCRUD.findVacantRooms(checkIn, checkOut);
 	}
 
+	/**
+	 * Not implemented
+	 */
 	@Override
 	public List<Rooms> list() {
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * Not implemented
+	 */
 	@Override
 	public void update(long id, Rooms Rooms) {
-		
+		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * Not implemented
+	 */
 	@Override
 	public void delete(long id) {
-		
+		throw new UnsupportedOperationException();
 	}
 
 }

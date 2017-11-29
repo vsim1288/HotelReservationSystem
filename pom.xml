@@ -7,7 +7,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>HotelReservationSystem Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<repositories>
 		<repository>

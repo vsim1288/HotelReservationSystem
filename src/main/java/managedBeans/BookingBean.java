@@ -49,7 +49,7 @@ public class BookingBean implements Serializable {
 	 * @throws ParseException
 	 */
 	public void setCheckIn(Date checkIn) throws ParseException {
-		System.out.println("checkin: " + new SimpleDateFormat("yyyy-MM-dd").format(checkIn));
+		System.out.println("Checkin: " + checkIn);
 		this.checkIn = checkIn;
 	}
 
@@ -130,7 +130,13 @@ public class BookingBean implements Serializable {
 
 	public void book() {
 		FacesContext context = FacesContext.getCurrentInstance();
-		if (checkIn == null || checkOut == null || numberOfPeople.equals("") || numberOfRooms.equals("")) {
+		
+		if(checkIn == null || checkOut == null) {
+			context.addMessage(null, new FacesMessage("Error", "Please select your dates!"));
+			return;
+		}
+		
+		if (numberOfPeople.equals("") || numberOfRooms.equals("")) {
 			context.addMessage(null, new FacesMessage("Error", "There are still empty fields left!"));
 			return;
 		}

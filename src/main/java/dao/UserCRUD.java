@@ -23,15 +23,16 @@ public class UserCRUD implements UserDAO {
 			session.beginTransaction();
 			System.out.println("begin");
 			User userFound = new User();
-			
+
 			if ((userFound = session.get(User.class, user.getUsername())) != null) {
 				Hibernate.initialize(userFound.getRole());
 				Hibernate.initialize(userFound.getUserInfo());
 				Hibernate.initialize(userFound.getBookingRecords());
-				
+
 				if (user.getUsername().equals(userFound.getUsername())
 						&& user.getPassword().equals(userFound.getPassword())) {
-					System.out.println("found: " + userFound.getUsername() + ":" + userFound.getPassword() + ":" + userFound.getRole().getRoleName());
+					System.out.println("found: " + userFound.getUsername() + ":" + userFound.getPassword() + ":"
+							+ userFound.getRole().getRoleName());
 					return userFound;
 				}
 			}
@@ -54,22 +55,22 @@ public class UserCRUD implements UserDAO {
 	public List<User> findAll() {
 		Session session = HibernateConfig.buildSessionFactory().openSession();
 		List<User> userList;
-		
+
 		try {
 			session.beginTransaction();
-			
+
 			Query query = session.createQuery("select u from User u");
-			
+
 			userList = query.getResultList();
-			
+
 			session.getTransaction().commit();
 			System.out.println("userCRUD");
 			return userList;
-		} catch(Exception e) {
+		} catch (Exception e) {
 			System.out.println("FindALL ERROR: " + e.getMessage());
-			
+
 			session.getTransaction().rollback();
-			
+
 			return null;
 		} finally {
 			session.close();
@@ -79,59 +80,65 @@ public class UserCRUD implements UserDAO {
 	@Override
 	public boolean insertUser(User user) {
 		Session session = HibernateConfig.buildSessionFactory().openSession();
-		
+
 		try {
 			session.beginTransaction();
-			
+
 			session.save(user);
-			
+
 			session.getTransaction().commit();
-			
+
 			return true;
-		} catch(Exception e) {
+		} catch (Exception e) {
 			session.getTransaction().rollback();
-			
+
 			return false;
 		} finally {
 			session.close();
 		}
 	}
 
+	/**
+	 * Not implemented
+	 */
 	@Override
 	public boolean updateUser(User user) {
-		return false;
+		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * Not implemented
+	 */
 	@Override
 	public boolean deleteUser(User user) {
-		return false;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public User findByUsername(String username) {
 		Session session = HibernateConfig.buildSessionFactory().openSession();
-		
+
 		try {
 			session.beginTransaction();
-			
+
 			@SuppressWarnings("unchecked")
 			Query<User> query = session.createQuery("select u from User u where u.username = :username");
 			query.setParameter("username", username);
 			System.out.println(username);
 			User user = query.getSingleResult();
-			
+
 			session.getTransaction().commit();
-			
-			if(user == null) {
+
+			if (user == null) {
 				return null;
-			} 
-			
+			}
+
 			return user;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			
+
 			session.getTransaction().rollback();
-			
+
 			return null;
 		}
 	}

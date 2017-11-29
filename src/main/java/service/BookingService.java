@@ -26,10 +26,10 @@ public class BookingService implements BookingServiceInterface {
 		System.out.println("get vacant rooms, ratio: " + ratio);
 		roomsList = roomsService.getVacantRooms(checkIn, checkOut);
 
-		if(roomsList.size() < ratio + numberOfRooms - 1) {
+		if (roomsList.size() < ratio + numberOfRooms - 1) {
 			return false;
 		}
-		
+
 		if (roomsList.isEmpty()) {
 			return false;
 		}
@@ -79,8 +79,8 @@ public class BookingService implements BookingServiceInterface {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
-		if(numberOfPeople != 0) {
+
+		if (numberOfPeople != 0) {
 			return false;
 		}
 
@@ -90,9 +90,12 @@ public class BookingService implements BookingServiceInterface {
 		return bookingCRUD.insertBooking(bookingList);
 	}
 
+	/**
+	 * Not implemented
+	 */
 	@Override
 	public Booking get(Booking Booking) {
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
@@ -100,14 +103,20 @@ public class BookingService implements BookingServiceInterface {
 		return bookingCRUD.findAll();
 	}
 
+	/**
+	 * Not implemented
+	 */
 	@Override
 	public void update(long id, Booking Booking) {
-
+		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * Not implemented
+	 */
 	@Override
 	public void delete(long id) {
-
+		throw new UnsupportedOperationException();
 	}
 
 	@Override

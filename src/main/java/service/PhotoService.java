@@ -8,14 +8,20 @@ import entities.Photo;
 public class PhotoService implements PhotoServiceInterface {
 	PhotoCRUD photoCRUD = new PhotoCRUD();
 
+	/**
+	 * Not implemented
+	 */
 	@Override
 	public Photo save(Photo Photo) {
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * Not implemented
+	 */
 	@Override
 	public Photo get(Photo Photo) {	
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
@@ -23,12 +29,20 @@ public class PhotoService implements PhotoServiceInterface {
 		return photoCRUD.findAll();
 	}
 
+	/**
+	 * Not implemented
+	 */
 	@Override
-	public void update(long id, Photo Photo) {	
+	public boolean update(long id, Photo Photo) {	
+		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * Not implemented
+	 */
 	@Override
-	public void delete(long id) {
+	public boolean delete(long id) {
+		throw new UnsupportedOperationException();
 	}
 
 }

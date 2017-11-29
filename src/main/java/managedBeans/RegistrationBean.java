@@ -148,6 +148,6 @@ public class RegistrationBean implements Serializable {
 			return;
 		}
 
-		context.addMessage(null, new FacesMessage("Sorry", "Something went wrong! Please try again later"));
+		context.addMessage(null, new FacesMessage("Sorry", "Username already exists!"));
 	}
 }

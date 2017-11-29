@@ -17,46 +17,54 @@ public class PhotoCRUD implements PhotoDAO {
 		Session session = HibernateConfig.buildSessionFactory().openSession();
 		try {
 			session.beginTransaction();
-			
+
 			Query<Photo> query = session.createQuery("from Photo");
 			photoList = query.getResultList();
-			
+
 			System.out.println(photoList.size());
-			
+
 			session.getTransaction().commit();
-			
+
 			return photoList;
-		} catch(Exception e) {
+		} catch (Exception e) {
 			session.getTransaction().rollback();
-			
+
 			return null;
 		} finally {
 			session.close();
 		}
 	}
 
+	/**
+	 * Not implemented
+	 */
 	@Override
 	public Photo findByPhotoName(Photo Photo) {
-		
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * Not implemented
+	 */
 	@Override
 	public Photo insertPhoto(Photo Photo) {
-		
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * Not implemented
+	 */
 	@Override
 	public boolean updatePhoto(Photo Photo) {
-
-		return false;
+		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * Not implemented
+	 */
 	@Override
 	public boolean deletePhoto(Photo Photo) {
-
-		return false;
+		throw new UnsupportedOperationException();
 	}
 
 }

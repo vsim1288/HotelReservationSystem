@@ -12,9 +12,12 @@ import hibernate.HibernateConfig;
 
 public class RoomsCRUD implements RoomsDAO {
 
+	/**
+	 * Not implemented
+	 */
 	@Override
 	public List<Rooms> findAll() {
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	@SuppressWarnings("deprecation")
@@ -47,19 +50,28 @@ public class RoomsCRUD implements RoomsDAO {
 		}
 	}
 
+	/**
+	 * Not implemented
+	 */
 	@Override
 	public Rooms insertRooms(Rooms Rooms) {
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * Not implemented
+	 */
 	@Override
 	public boolean updateRooms(Rooms Rooms) {
-		return false;
+		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * Not implemented
+	 */
 	@Override
 	public boolean deleteRooms(Rooms Rooms) {
-		return false;
+		throw new UnsupportedOperationException();
 	}
 
 }

@@ -10,12 +10,10 @@ public class UserService implements UserServiceInterface {
 
 	@Override
 	public boolean save(User user) {
-		System.out.println("userService");
-				
-		if(userCRUD.findByUsername(user.getUsername()) != null) {
+		if (userCRUD.findByUsername(user.getUsername()) != null) {
 			return false;
 		}
-	
+
 		return userCRUD.insertUser(user);
 	}
 
@@ -29,14 +27,20 @@ public class UserService implements UserServiceInterface {
 		return userCRUD.findAll();
 	}
 
+	/**
+	 * Not implemented
+	 */
 	@Override
 	public void update(long id, User user) {
-		
+		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * Not implemented
+	 */
 	@Override
 	public void delete(long id) {
-		
+		throw new UnsupportedOperationException();
 	}
 
 	@Override

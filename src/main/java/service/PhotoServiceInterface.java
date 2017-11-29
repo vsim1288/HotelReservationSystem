@@ -12,7 +12,7 @@ public interface PhotoServiceInterface {
 
 	public List<Photo> getAll();
 
-	public void update(long id, Photo Photo);
+	public boolean update(long id, Photo Photo);
 
-	public void delete(long id);
+	public boolean delete(long id);
 }

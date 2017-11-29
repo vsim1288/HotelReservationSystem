@@ -56,14 +56,20 @@ public class BookingCRUD implements BookingDAO{
 		}
 	}
 
+	/**
+	 * Not implemented
+	 */
 	@Override
 	public boolean updateBooking(Booking Booking) {
-		return false;
+		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * Not implemented
+	 */
 	@Override
 	public boolean deleteBooking(Booking Booking) {
-		return false;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
