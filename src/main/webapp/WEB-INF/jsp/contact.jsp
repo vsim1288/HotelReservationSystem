@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -24,21 +26,18 @@
 		};
 		map = new google.maps.Map(document.getElementById('map-canvas'),
 				mapOptions);
-		
+
 		var marker = new google.maps.Marker({
 			position : new google.maps.LatLng(46.397, 23.644),
 			map : map
 		});
-	}	
+	}
 </script>
 <title>Contact</title>
 </head>
 <body>
-	<div class="container-fluid">
-		<h3 id="userId">
-			Welcome back,
-			<%="Szilard"%></h3>
-	</div>
+	<%@ include file="welcomeBackInclude.jsp"%>
+
 	<div class="container-fluid" id="welcomeDiv">
 		<h1 class="text-center">Hotel Tristar</h1>
 	</div>
@@ -55,7 +54,7 @@
 						<li><a href="booking">Booking</a></li>
 						<li><a href="gallery">Gallery</a></li>
 						<li class="active"><a href="contact">Contact</a></li>
-						<li><a href="logout">Logout</a></li>
+						<%@ include file="logoutInclude.jsp"%>
 					</ul>
 				</form>
 			</div>
