@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -15,8 +17,8 @@
 <title>Booking</title>
 </head>
 <body>
-	<%@ include file="welcomeBackInclude.jsp" %>
-	
+	<%@ include file="welcomeBackInclude.jsp"%>
+
 	<div class="container-fluid" id="welcomeDiv">
 		<h1 class="text-center">Hotel Tristar</h1>
 	</div>
@@ -33,7 +35,7 @@
 						<li class="active"><a href="booking">Booking</a></li>
 						<li><a href="gallery">Gallery</a></li>
 						<li><a href="contact">Contact</a></li>
-						<li><a href="logout">Logout</a></li>
+						<%@ include file="logoutInclude.jsp" %>
 					</ul>
 				</form>
 			</div>
@@ -47,7 +49,8 @@
 			<div id="bookingDiv">
 				<h5 id="bookingMessage" class="text-center">Please select all
 					the information to help us get the best choices for your stay</h5>
-				<form id="bookingForm" class="form-inline">
+				<form id="bookingForm" class="form-inline" action="booking"
+					method="post">
 					<div class="form-group">
 						<label for="checkInCalendar"
 							class="control-label col-sm-offset-1 col-sm-3">Check-in</label> <label

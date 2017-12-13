@@ -11,11 +11,6 @@ public class PageController {
 		return new ModelAndView("login");
 	}
 	
-	@GetMapping("/register")
-	public ModelAndView regiter() {
-		return new ModelAndView("register");
-	}
-	
 	@GetMapping({"/", "/welcome"})
 	public ModelAndView welcome() {
 		return new ModelAndView("welcome");

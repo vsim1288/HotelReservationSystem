@@ -23,3 +23,7 @@ body {
 .errMsg {
 	color: red;
 }
+
+#firstname {
+	border-color: 2px solid red;
+}
