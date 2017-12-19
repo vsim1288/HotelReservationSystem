@@ -6,8 +6,9 @@ import com.hotel.entity.Users;
 
 public interface UsersDao {
 	public Users get(int id);
-	public int save(Users room);
+	public boolean save(Users users);
 	public List<Users> getAll();
-	public void update(int id, Users room);
+	public void update(int id, Users users);
 	public void delete(int id);
+	public String findByUserAndPassword(Users user);
 }

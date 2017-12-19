@@ -14,13 +14,13 @@ public class UsersServiceImp implements UsersService {
 	private UsersDao usersDao;
 
 	@Override
-	public Users get(int id) {
+	public Users get(Users user) {
 		return null;
 	}
 
 	@Override
-	public int save(Users room) {
-		return 0;
+	public boolean save(Users users) {
+		return usersDao.save(users);
 	}
 
 	@Override
@@ -39,4 +39,8 @@ public class UsersServiceImp implements UsersService {
 		
 	}
 
+	@Override
+	public String findByUsername(Users user) {
+		return usersDao.findByUserAndPassword(user);
+	}
 }

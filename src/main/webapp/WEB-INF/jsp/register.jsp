@@ -36,7 +36,10 @@
 		<br></br>
 
 		<div class="text-center" id="registrationFormDiv">
-
+			<c:if test="${status != null || !status.equals(\"\")}">
+				<c:out value="${status}"></c:out>
+			</c:if>
+			
 			<form:form id="regFormId" class="form-horizontal" action="register"
 				method="post" commandName="registerForm">
 				<div class="form-group text-center">
@@ -76,8 +79,8 @@
 					<label class="control-label col-sm-5" for="phone">*Phone:</label>
 					<div class="col-sm-2">
 						<form:input type="text" class="form-control" id="phone"
-							path="phone" onkeyup="checkPhone()"
-							onblur="checkPhone()" placeholer="Enter phone number" required="true" />
+							path="phone" onkeyup="checkPhone()" onblur="checkPhone()"
+							placeholer="Enter phone number" required="true" />
 						<em id="phoneMessage"></em>
 					</div>
 				</div>
@@ -108,7 +111,8 @@
 					<div class="col-sm-2">
 						<form:input type="password" class="form-control" id="password"
 							path="password" onkeyup="checkPassword()"
-							onblur="checkPassword()" placeholder="Enter password" required="true" />
+							onblur="checkPassword()" placeholder="Enter password"
+							required="true" />
 						<em id="passwordMessage"></em>
 					</div>
 				</div>
