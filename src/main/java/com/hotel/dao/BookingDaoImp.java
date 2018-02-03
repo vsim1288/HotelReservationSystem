@@ -34,7 +34,7 @@ public class BookingDaoImp implements BookingDao {
 	public List<Booking> getAll() {
 		Session session = sessionFactory.getCurrentSession();
 		
-		Query query = session.createQuery("select b from Booking b");
+		Query query = (Query) session.createQuery("select b from Booking b");
 		
 		return query.getResultList();
 	}

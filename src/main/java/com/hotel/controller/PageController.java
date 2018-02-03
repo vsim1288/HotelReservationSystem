@@ -35,4 +35,9 @@ public class PageController {
 	public ModelAndView pageNotFound() {
 		return new ModelAndView("404");
 	}
+	
+	@GetMapping("/access-denied")
+	public ModelAndView accessDenied() {
+		return new ModelAndView("403");
+	}
 }

@@ -39,7 +39,7 @@ public class RoomsDaoImp implements RoomsDao {
 	public List<Rooms> getAll() {
 		Session session = sessionFactory.getCurrentSession();
 
-		Query query = session.createQuery("select r from Rooms r");
+		Query query = (Query) session.createQuery("select r from Rooms r");
 
 		return query.getResultList();
 	}
