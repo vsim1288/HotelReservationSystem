@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <script
@@ -10,8 +10,7 @@
 <link rel='stylesheet'
 	href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />
 
-<link rel='stylesheet'
-	th:href="@{/stylesheets/style.css}"/>
+<link rel='stylesheet' th:href="@{/stylesheets/style.css}" />
 <title>Login</title>
 </head>
 <body style="background-color: lightblue;">
@@ -36,24 +35,24 @@
 		<br></br>
 
 		<form id="loginForm" class="form-horizontal"
-			action="<c:url value='/j_spring_security_check' />" method="post">
+			action="/j_spring_security_check" method="post">
 			<div class="form-group">
 				<label class="control-label col-sm-5" for="username">Username:</label>
 				<div class="col-sm-2">
 					<input type="text" class="form-control" name="username"
-						id="username" placeholder="Enter username" required="true" />
+						id="username" placeholder="Enter username" required="required" />
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-5" for="password">Password:</label>
 				<div class="col-sm-2">
 					<input type="password" class="form-control" name="password"
-						id="password" placeholder="Enter password" required="true" />
+						id="password" placeholder="Enter password" required="required" />
 				</div>
 			</div>
 			<div class="form-group">
 				<input type="submit"
-					class="btn btn-default col-sm-offset-5 col-sm-1" value="Login"/>
+					class="btn btn-default col-sm-offset-5 col-sm-1" value="Login" />
 			</div>
 		</form>
 	</div>

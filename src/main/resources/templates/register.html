@@ -1,20 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
-<script src="<c:url value="/resources/js/registerValidation.js" />"
-	type="text/javascript"></script>
+<script th:src="@{/js/registerValidation.js}" type="text/javascript"></script>
 <link rel='stylesheet'
 	href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />
-<link rel='stylesheet'
-	href="<c:url value="/resources/stylesheets/registerStyle.css" />" />
+<link rel='stylesheet' type="text/css" media="all"
+	href="resources/static/stylesheets/WelcomeStyle.css"
+	th:href="@{/stylesheets/registerStyle.css}" />
 <title>Register</title>
 </head>
 <body>
@@ -39,7 +37,7 @@
 			<c:if test="${status != null || !status.equals(\"\")}">
 				<c:out value="${status}"></c:out>
 			</c:if>
-			
+
 			<form:form id="regFormId" class="form-horizontal" action="register"
 				method="post" commandName="registerForm">
 				<div class="form-group text-center">

@@ -1,10 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script
@@ -14,11 +10,11 @@
 <link rel='stylesheet'
 	href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />
 <link rel='stylesheet'
-	href="<c:url value="/resources/stylesheets/WelcomeStyle.css" />" />
+	th:href="${/stylesheets/WelcomeStyle.css}" />
 <title>Hotel Tristar</title>
 </head>
 <body>
-	<%@ include file="welcomeBackInclude.jsp"%>
+	<!-- <div th:replace="fragments/welcomeBackInclude :: welcomeBackUser"></div>-->
 	<div class="container-fluid" id="welcomeDiv">
 		<h1 class="text-center">Hotel Tristar</h1>
 	</div>
@@ -35,7 +31,7 @@
 						<li><a href="booking">Booking</a></li>
 						<li><a href="gallery">Gallery</a></li>
 						<li><a href="contact">Contact</a></li>
-						<li><a href="logout">Logout</a></li>
+						<!-- <li><a th:replace="fragments/logoutInclude :: logout"></a></li>-->
 					</ul>
 				</form>
 			</div>

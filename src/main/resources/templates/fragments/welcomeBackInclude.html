@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 	xmlns:th="http://www.thymeleaf.org">
 <head></head>
 <body>
 	<div id="userText" th:fragment="welcomeBackUser">
 		<sec:authorize access="hasRole('USER')">
 			<div class="container-fluid"
-				th:if="${pageContext.request.userPrincipal.name !=null}">
+				th:if="${#authorization.name !=null}">
 				<h3 id="userId">Welcome back,
-					${pageContext.request.userPrincipal.name}</h3>
+					${authorization.name}</h3>
 			</div>
 		</sec:authorize>
 	</div>

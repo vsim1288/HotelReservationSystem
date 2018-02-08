@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -11,7 +10,9 @@
 	src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 <link rel='stylesheet'
 	href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />
-<link rel='stylesheet' type="text/css" media="all" href="resources/static/stylesheets/WelcomeStyle.css" th:href="@{/stylesheets/WelcomeStyle.css}" />
+<link rel='stylesheet' type="text/css" media="all"
+	href="resources/static/stylesheets/WelcomeStyle.css"
+	th:href="@{/stylesheets/WelcomeStyle.css}" />
 <title>Hotel Tristar</title>
 </head>
 <body>
@@ -22,22 +23,22 @@
 	</div>
 	<div class='container' id="navbarDiv">
 		<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand">*** Tristar ***</a>
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand">*** Tristar ***</a>
+				</div>
+				<div id="navMenu">
+					<form>
+						<ul class="nav navbar-nav col-sm-6 text-center">
+							<li class="active"><a href="welcome">Home</a></li>
+							<li><a href="booking">Booking</a></li>
+							<li><a href="gallery">Gallery</a></li>
+							<li><a href="contact">Contact</a></li>
+							<!-- <li><a th:replace="fragments/logoutInclude :: logout"></a></li>-->
+						</ul>
+					</form>
+				</div>
 			</div>
-			<div id="navMenu">
-				<form>
-					<ul class="nav navbar-nav col-sm-6 text-center">
-						<li class="active"><a href="welcome">Home</a></li>
-						<li><a href="booking">Booking</a></li>
-						<li><a href="gallery">Gallery</a></li>
-						<li><a href="contact">Contact</a></li> 
-						<!-- <li><a th:replace="fragments/logoutInclude :: logout"></a></li>-->
-					</ul>
-				</form>
-			</div>
-		</div>
 		</nav>
 	</div>
 	<div id="wrapper">
@@ -60,9 +61,9 @@
 
 				<div id="picturesDivRight">
 					<h3>PICTURES</h3>
-					<br></br> <img class="hotel-img" th:src="@{/images/hotel-inside.jpg}"/>
-					<br></br> <img class="hotel-img" th:src="@{/images/hotel-outside.jpg}"/>
-					<br></br>
+					<br></br> <img class="hotel-img"
+						th:src="@{/images/hotel-inside.jpg}" /> <br></br> <img
+						class="hotel-img" th:src="@{/images/hotel-outside.jpg}" /> <br></br>
 				</div>
 				<div id="footerDiv">În toate cazurile rezervarea se face prin
 					telefon sau prin pagina noastră web la Booking. Dacă aveți alte
