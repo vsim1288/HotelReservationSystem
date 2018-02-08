@@ -7,8 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringHotel {
 
 	public static void main(String[] args) {
-		//SpringApplication.run(SpringBootWebApplication.class, args);
-
+		SpringApplication.run(SpringHotel.class, args);
 	}
 
 }

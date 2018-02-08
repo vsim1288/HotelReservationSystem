@@ -42,7 +42,7 @@ public class RegisterController {
 		userInfo.setLastName(registerForm.getLastname());
 		userInfo.setPhone(registerForm.getPhone());
 
-		user.setEnabled(1);
+		user.setEnabled((byte)1);
 		user.setUsername(registerForm.getUsername());
 		user.setPassword(registerForm.getPassword());
 		user.setUserInfo(userInfo);

@@ -12,18 +12,27 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table(name = "users")
 public class Users {
 	@Id
 	@Column(name = "Username")
+	@Email(message = "*Please provide a valid Email")
+	@NotEmpty(message = "*Please provide an email")
 	private String username;
 
 	@Column(name = "Password")
+	@Length(min = 5, message = "*Your password must have at least 5 characters")
+	@NotEmpty(message = "*Please provide your password")
+	@Transient
 	private String password;
 
 	@Column(name = "Enabled")
-	private int enabled;
+	private byte enabled;
 
 	@ManyToOne
 	@JoinColumn(name = "RoleId")
@@ -32,7 +41,7 @@ public class Users {
 	@OneToOne
 	@PrimaryKeyJoinColumn
 	private UserInformation userInfo;
-	
+
 	@Transient
 	private List<Booking> bookingList;
 
@@ -69,7 +78,7 @@ public class Users {
 	/**
 	 * @return the enabled
 	 */
-	public int getEnabled() {
+	public byte getEnabled() {
 		return enabled;
 	}
 
@@ -77,7 +86,7 @@ public class Users {
 	 * @param enabled
 	 *            the enabled to set
 	 */
-	public void setEnabled(int enabled) {
+	public void setEnabled(byte enabled) {
 		this.enabled = enabled;
 	}
 
@@ -104,11 +113,11 @@ public class Users {
 	}
 
 	/**
-	 * @param userInfo the userInfo to set
+	 * @param userInfo
+	 *            the userInfo to set
 	 */
 	public void setUserInfo(UserInformation userInfo) {
 		this.userInfo = userInfo;
 	}
 
-	
 }

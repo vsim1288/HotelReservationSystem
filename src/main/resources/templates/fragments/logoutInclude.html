@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+	<div id="logoutText" th:fragment="logout">
+		<sec:authorize access="hasRole('USER')">
+			<li><a th:href="/j_spring_security_logout">">Logout</a></li>
+		</sec:authorize>
+	</div>
+</body>
+</html>

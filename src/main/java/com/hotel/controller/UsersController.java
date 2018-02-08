@@ -17,7 +17,7 @@ public class UsersController {
 	
 	@GetMapping("users/getAll")
 	private ResponseEntity<List<Users>> getAll() {
-		List<Users> usersList = usersService.getAll();
+		List<Users> usersList = usersService.findAll();
 		return ResponseEntity.ok().body(usersList);
 	}
 }

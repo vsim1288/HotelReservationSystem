@@ -3,15 +3,24 @@ package com.hotel.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.hotel.dao.UsersDao;
+import com.hotel.entity.Roles;
 import com.hotel.entity.Users;
+import com.hotel.repository.RolesRepository;
+import com.hotel.repository.UserRepository;
 
-@Service
+@Service("userService")
 public class UsersServiceImp implements UsersService {
 	@Autowired
-	private UsersDao usersDao;
+	private UserRepository userRepository;
+	
+	@Autowired
+	private RolesRepository roleRepository;
+	
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@Override
 	public Users get(Users user) {
@@ -19,28 +28,19 @@ public class UsersServiceImp implements UsersService {
 	}
 
 	@Override
-	public boolean save(Users users) {
-		return usersDao.save(users);
-	}
-
-	@Override
-	public List<Users> getAll() {
-		return usersDao.getAll();
-	}
-
-	@Override
-	public void update(int id, Users room) {
+	public void saveUser(Users users) {
+		users.setPassword(bCryptPasswordEncoder.encode(users.getPassword()));
+		users.setEnabled((byte)1);
 		
-	}
-
-	@Override
-	public void delete(int id) {
-		// TODO Auto-generated method stub
+		Roles role = roleRepository.findOne(1L);
 		
+		users.setRoleId(role);
+		
+		userRepository.save(users);
 	}
 
 	@Override
-	public String findByUsername(Users user) {
-		return usersDao.findByUserAndPassword(user);
+	public List<Users> findAll() {
+		return userRepository.findAll();
 	}
 }

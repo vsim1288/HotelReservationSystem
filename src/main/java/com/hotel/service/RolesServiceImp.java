@@ -2,8 +2,11 @@ package com.hotel.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.hotel.entity.Roles;
 
+@Service
 public class RolesServiceImp implements RolesService {
 
 	

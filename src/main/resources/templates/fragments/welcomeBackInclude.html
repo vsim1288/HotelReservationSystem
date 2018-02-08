@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+	<div id="userText" th:fragment="welcomeBackUser">
+		<sec:authorize access="hasRole('USER')">
+			<div class="container-fluid"
+				th:if="${pageContext.request.userPrincipal.name !=null}">
+				<h3 id="userId">Welcome back,
+					${pageContext.request.userPrincipal.name}</h3>
+			</div>
+		</sec:authorize>
+	</div>
+</body>
+</html>

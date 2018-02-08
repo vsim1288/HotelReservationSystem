@@ -22,15 +22,15 @@ public class RoomsController {
 
 	@GetMapping("/room/getAll")
 	public ResponseEntity<List<Rooms>> getAll() {
-		List<Rooms> rooms = roomsServiceImp.getAll();
+		List<Rooms> rooms = roomsServiceImp.findAll();
 		return ResponseEntity.ok().body(rooms);
 	}
 
 	@PostMapping("/room/addRoom")
 	public ResponseEntity<?> save(@RequestBody Rooms rooms) {
-		int id = roomsServiceImp.save(rooms);
+		roomsServiceImp.save(rooms);
 
-		return ResponseEntity.ok().body("New room has been saved with id: " + id);
+		return ResponseEntity.ok().body("New room has been saved!");
 	}
 	
 	@PutMapping("/room/updateRoom/{id}")
