@@ -10,7 +10,8 @@
 <link rel='stylesheet'
 	href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />
 
-<link rel='stylesheet' type="text/css" th:href="@{/stylesheets/style.css}" />
+<link rel='stylesheet' type="text/css"
+	th:href="@{/stylesheets/style.css}" />
 <title>Login</title>
 </head>
 <body style="background-color: lightblue;">
@@ -34,8 +35,8 @@
 		</div>
 		<br></br>
 
-		<form id="loginForm" class="form-horizontal"
-			action="/j_spring_security_check" method="post">
+		<form id="loginForm" class="form-horizontal" th:action="@{/login}"
+			method="post">
 			<div class="form-group">
 				<label class="control-label col-sm-5" for="username">Username:</label>
 				<div class="col-sm-2">

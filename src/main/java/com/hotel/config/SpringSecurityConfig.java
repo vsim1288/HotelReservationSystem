@@ -2,6 +2,8 @@ package com.hotel.config;
 
 import javax.sql.DataSource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -31,6 +33,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth)
 			throws Exception {
+		final Logger log = LoggerFactory.getLogger(SpringSecurityConfig.class);
+		
+		log.info(usersQuery + " " + rolesQuery);
 		auth.
 			jdbcAuthentication()
 				.usersByUsernameQuery(usersQuery)
@@ -52,7 +57,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				.loginPage("/login")
 				.permitAll()
 				.defaultSuccessUrl("/booking")
-				.usernameParameter("email")
+				.usernameParameter("username")
 				.passwordParameter("password")
 				.and()
 				.logout()
