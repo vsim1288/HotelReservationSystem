@@ -1,11 +1,29 @@
 package com.hotel.form;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class RegisterForm {
+	@Length(min = 3, message = "*First name must be at least 3 characters long")
+	@NotEmpty(message = "*Please provide your first name")
 	private String firstname;
+
+	@Length(min = 3, message = "*Last name must be at least 3 characters long")
+	@NotEmpty(message = "*Please provide your last name")
 	private String lastname;
+	
 	private String address;
-	private int phone;
+
+	@Length(message = "*It must be at least 10 digits long", min = 10)
+	@NotEmpty(message = "*Please provide your phone number")
+	private String phone;
+
+	@Length(min = 6, message = "*Please provide a valid Email")
+	@NotEmpty(message = "*Please provide an email")
 	private String username;
+
+	@Length(min = 7, message = "*Your password must be between 7 and 14 characters long!")
+	@NotEmpty(message = "*Please provide your password")
 	private String password;
 
 	/**
@@ -22,7 +40,7 @@ public class RegisterForm {
 	 * @param username
 	 * @param password
 	 */
-	public RegisterForm(String firstname, String lastname, String address, int phone, String username,
+	public RegisterForm(String firstname, String lastname, String address, String phone, String username,
 			String password) {
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -80,7 +98,7 @@ public class RegisterForm {
 	/**
 	 * @return the phone
 	 */
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
@@ -88,7 +106,7 @@ public class RegisterForm {
 	 * @param phone
 	 *            the phone to set
 	 */
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

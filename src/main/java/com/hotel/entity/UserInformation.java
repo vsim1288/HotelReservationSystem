@@ -2,14 +2,20 @@ package com.hotel.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "userinformation")
 public class UserInformation {
 	@Id
-	private String email;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "userInfoId")
+	private int userInfoId;
 
 	@Column(name = "FirstName")
 	private String firstName;
@@ -21,22 +27,11 @@ public class UserInformation {
 	private String address;
 
 	@Column(name = "Phone")
-	private int phone;
+	private String phone;
 
-	/**
-	 * @return the email
-	 */
-	public String getEmail() {
-		return email;
-	}
-
-	/**
-	 * @param email
-	 *            the email to set
-	 */
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	@OneToOne
+	@PrimaryKeyJoinColumn
+	private Users users;
 
 	/**
 	 * @return the firstName
@@ -86,7 +81,7 @@ public class UserInformation {
 	/**
 	 * @return the phone
 	 */
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
@@ -94,7 +89,37 @@ public class UserInformation {
 	 * @param phone
 	 *            the phone to set
 	 */
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	/**
+	 * @return the userInfoId
+	 */
+	public int getUserInfoId() {
+		return userInfoId;
+	}
+
+	/**
+	 * @param userInfoId
+	 *            the userInfoId to set
+	 */
+	public void setUserInfoId(int userInfoId) {
+		this.userInfoId = userInfoId;
+	}
+
+	/**
+	 * @return the users
+	 */
+	public Users getUsers() {
+		return users;
+	}
+
+	/**
+	 * @param users
+	 *            the users to set
+	 */
+	public void setUsers(Users users) {
+		this.users = users;
 	}
 }

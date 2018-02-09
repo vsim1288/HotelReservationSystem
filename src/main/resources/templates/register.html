@@ -33,94 +33,77 @@
 		</div>
 		<br></br>
 
-		<div class="text-center" id="registrationFormDiv">
-			<c:if test="${status != null || !status.equals(\"\")}">
-				<c:out value="${status}"></c:out>
-			</c:if>
-
-			<form:form id="regFormId" class="form-horizontal" action="register"
-				method="post" commandName="registerForm">
+		<div class="text-center col-md-12" id="registrationFormDiv">
+			<span th:utext="${success}"></span>
+			<form autocomplete="off" id="regFormId" class="form-horizontal"
+				th:object="${registerForm}" action="register"
+				th:action="@{/register}" method="post" role="form">
 				<div class="form-group text-center">
-					<label class="control-label col-sm-5" for="firstName">*First
-						Name:</label>
-					<div class="col-sm-2">
-						<form:input type="text" class="form-control" id="firstName"
-							path="firstname" onkeyup="checkFirstNameLength()"
-							onblur="checkFirstNameLength()" placeholder="Enter first name"
-							required="true" />
-						<em id="firstnameMessage"></em>
+					<label class="col-sm-4 col-sm-offset-4"
+						th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></label>
+					<div class="col-sm-4 col-sm-offset-4">
+						<input type="text" class="form-control" id="firstName"
+							th:field="*{firstname}" placeholder="Enter first name"
+							required="required" />
 					</div>
 				</div>
 
 
-				<div class="form-group text-center">
-					<label class="control-label col-sm-5" for="lastName">*Last
-						Name:</label>
-					<div class="col-sm-2">
-						<form:input type="text" class="form-control" id="lastName"
-							path="lastname" onkeyup="checkLastNameLength()"
-							onblur="checkLastNameLength()" placeholder="Enter first name"
-							required="true" />
-						<em id="lastnameMessage"></em>
+				<div class="form-group text-center col-sm-offset-3">
+					<label class="col-sm-4 col-sm-offset-4"
+						th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></label>
+					<div class="col-sm-4 col-sm-offset-4">
+						<input type="text" class="form-control" id="lastName"
+							placeholder="Enter last name" th:field="*{lastname}"
+							required="required" />
 					</div>
 				</div>
 
 				<div class="form-group text-center">
-					<label class="control-label col-sm-5" for="address">Address:</label>
-					<div class="col-sm-2">
-						<form:input type="text" class="form-control" id="address"
-							path="address" placeholer="Enter address" />
+					<div class="col-sm-4 col-sm-offset-4">
+						<input type="text" class="form-control" id="address"
+							th:field="*{address}" placeholder="Enter address" />
 					</div>
 				</div>
 
 				<div class="form-group text-center">
-					<label class="control-label col-sm-5" for="phone">*Phone:</label>
-					<div class="col-sm-2">
-						<form:input type="text" class="form-control" id="phone"
-							path="phone" onkeyup="checkPhone()" onblur="checkPhone()"
-							placeholer="Enter phone number" required="true" />
-						<em id="phoneMessage"></em>
+					<label class="col-sm-4 col-sm-offset-4"
+						th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></label>
+					<div class="col-sm-4 col-sm-offset-4">
+						<input type="text" class="form-control" id="phone"
+							th:field="*{phone}" placeholder="Enter phone number"
+							required="required" />
 					</div>
 				</div>
-				<br></br>
-				<em>E-mail and password will be used for authentification</em>
-				<br></br>
+				<br></br> <em>E-mail and password will be used for
+					authentification</em> <br></br>
 
 				<div class="form-group text-center">
-					<label class="control-label col-sm-5" for="email">*E-mail:</label>
-					<div class="col-sm-2">
-						<form:input type="e-mail" class="form-control" id="email"
-							path="username" placeholder="Enter e-mail" required="true" />
-						<em id="emailMessage"></em>
+					<label class="col-sm-4 col-sm-offset-4"
+						th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></label>
+					<div class="col-sm-4 col-sm-offset-4">
+						<input type="email" class="form-control" id="username"
+							required="required" th:field="*{username}" />
 					</div>
 				</div>
-				<em>Password can contain:</em>
-				<br></br>
-				<em> - numbers </em>
-				<br>
-				<em> - letters </em>
-				<br>
-				<em> - underscore </em>
-				<br>
-				<em> - must start with a letter </em>
-				<br> - password length 7-14 characters
+				<em>Password can contain:</em> <br></br> <em> - numbers </em> <br>
+				<em> - letters </em> <br> <em> - underscore </em> <br> <em>
+					- must start with a letter </em> <br> - password length 7-14
+				characters
 				<div class="form-group text-center">
-					<label class="control-label col-sm-5" for="password">*Password:</label>
-					<div class="col-sm-2">
-						<form:input type="password" class="form-control" id="password"
-							path="password" onkeyup="checkPassword()"
-							onblur="checkPassword()" placeholder="Enter password"
-							required="true" />
-						<em id="passwordMessage"></em>
+					<label class="col-sm-4 col-sm-offset-4"
+						th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></label>
+					<div class="col-sm-4 col-sm-offset-4">
+						<input type="password" class="form-control" id="password"
+							th:field="*{password}" placeholder="Enter password"
+							required="required" />
 					</div>
 				</div>
-				<br></br>
-				<input type="submit" class="btn btn-default" value="Register"
-					onclick="return validate()" />
-				<br></br>
+				<br></br> <input type="submit" class="btn btn-default"
+					value="Register" /> <br></br>
 
 				<h5>*required fields</h5>
-			</form:form>
+			</form>
 		</div>
 	</div>
 </body>

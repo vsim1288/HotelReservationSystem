@@ -2,13 +2,14 @@ package com.hotel.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -26,9 +27,8 @@ public class Users {
 	private String username;
 
 	@Column(name = "Password")
-	@Length(min = 5, message = "*Your password must have at least 5 characters")
+	@Length(min = 7, message = "*Your password must be between 7 and 14 characters long!")
 	@NotEmpty(message = "*Please provide your password")
-	@Transient
 	private String password;
 
 	@Column(name = "Enabled")
@@ -38,8 +38,7 @@ public class Users {
 	@JoinColumn(name = "RoleId")
 	private Roles roleId;
 
-	@OneToOne
-	@PrimaryKeyJoinColumn
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "users", cascade = CascadeType.ALL)
 	private UserInformation userInfo;
 
 	@Transient

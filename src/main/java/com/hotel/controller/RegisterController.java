@@ -1,11 +1,13 @@
 package com.hotel.controller;
 
-import java.util.Map;
+import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,22 +24,24 @@ public class RegisterController {
 	private UsersService usersService;
 
 	@GetMapping
-	public String getRegister(Map<String, Object> model) {
+	public ModelAndView getRegister() {
+		ModelAndView model = new ModelAndView();
 		RegisterForm registerForm = new RegisterForm();
-		model.put("registerForm", registerForm);
+		model.addObject("registerForm", registerForm);
+		model.setViewName("register");
 
-		return "register";
+		return model;
 	}
 
 	@PostMapping
-	public ModelAndView register(@ModelAttribute("registerForm") RegisterForm registerForm, Map<String, Object> model) {
-		String status;
+	public ModelAndView register(@Valid RegisterForm registerForm, BindingResult bindingResult) {
+		final Logger log = LoggerFactory.getLogger(RegisterController.class);
+		
 		Users user = new Users();
 		UserInformation userInfo = new UserInformation();
 		ModelAndView mv = new ModelAndView();
 
 		userInfo.setAddress(registerForm.getAddress());
-		userInfo.setEmail(registerForm.getUsername());
 		userInfo.setFirstName(registerForm.getFirstname());
 		userInfo.setLastName(registerForm.getLastname());
 		userInfo.setPhone(registerForm.getPhone());
@@ -47,24 +51,27 @@ public class RegisterController {
 		user.setPassword(registerForm.getPassword());
 		user.setUserInfo(userInfo);
 
-		status = "found";//usersService.findByUsername(user);
+		Users userExists = usersService.get(user);
+		log.info("Got user: " + userExists);
 		mv.setViewName("register");
 
-		if (status.equals("found")) {
-			model.put("status", "User exists!");
-			
-			
-
-			return mv;
+		if (userExists != null) {
+			log.error("User already exists!");
+			bindingResult.rejectValue("username", "error.username", "Username already exists!");
 		}
 
-		if (status.equals("error")) {
-			mv.getModel().put("status", "Something went wrong!");
-
-			return mv;
+		if(bindingResult.hasErrors()) {
+			log.error("Form has errors, sending back for correction!" + registerForm.getUsername());
+			mv.setViewName("register");
+		} else {
+			log.info("Saving new user!");
+			
+			usersService.saveUser(user);
+			
+			log.info("Redirecting to login page after successful registration!");
+			
+			mv.setViewName("login");
 		}
-
-		mv.getModel().put("status", "Registration successful");
 
 		return mv;
 
