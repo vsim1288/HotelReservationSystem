@@ -42,20 +42,24 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
-		http.
-			authorizeRequests()
-				.antMatchers("/").permitAll()
-				.antMatchers("/login").permitAll()
-				.antMatchers("/register").permitAll()
-				.antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
-				.authenticated().and().csrf().disable().formLogin()
-				.loginPage("/login").failureUrl("/login?error=true")
-				.defaultSuccessUrl("/admin/home")
+		http.csrf().disable()
+			.authorizeRequests()
+				.antMatchers("/", "/welcome", "/contact", "/gallery", "/register").permitAll()
+				.antMatchers("/admin/**").hasAuthority("ADMIN")
+				.anyRequest().authenticated()
+				.and()
+				.formLogin()
+				.loginPage("/login")
+				.permitAll()
+				.defaultSuccessUrl("/booking")
 				.usernameParameter("email")
 				.passwordParameter("password")
-				.and().logout()
+				.and()
+				.logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-				.logoutSuccessUrl("/").and().exceptionHandling()
+				.logoutSuccessUrl("/")
+				.and()
+				.exceptionHandling()
 				.accessDeniedPage("/access-denied");
 	}
 	
@@ -63,6 +67,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 	    web
 	       .ignoring()
-	       .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
+	       .antMatchers("/resources/**", "/static/**", "/stylesheets/**", "/js/**", "/images/**");
 	}
 }

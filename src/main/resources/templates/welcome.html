@@ -3,23 +3,24 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="charset=UTF-8">
+<link rel='stylesheet' type="text/css" media="all"
+	href="../../stylesheets/WelcomeStyle.css"
+	th:href="@{/stylesheets/WelcomeStyle.css}" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 <link rel='stylesheet'
 	href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />
-<link rel='stylesheet' type="text/css" media="all"
-	href="resources/static/stylesheets/WelcomeStyle.css"
-	th:href="@{/stylesheets/WelcomeStyle.css}" />
-<title>Hotel Tristar</title>
+
+<title th:text="#{hotel}">Hotel Tristar</title>
 </head>
 <body>
 	<!-- <div th:replace="fragments/welcomeBackInclude :: welcomeBackUser"></div>-->
 
 	<div class="container-fluid" id="welcomeDiv">
-		<h1 class="text-center">Hotel Tristar</h1>
+		<h1 class="text-center" th:text="#{hotel}">Hotel Tristar</h1>
 	</div>
 	<div class='container' id="navbarDiv">
 		<nav class="navbar navbar-default">
