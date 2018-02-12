@@ -11,8 +11,7 @@
 <link rel='stylesheet' type="text/css" media="all"
 	href="resources/static/stylesheets/WelcomeStyle.css"
 	th:href="@{/stylesheets/WelcomeStyle.css}" />
-<script type="text/javascript"
-	src="<c:url value='/resources/js/switchImage.js'/>"></script>
+<script type="text/javascript" th:src="@{/js/switchImage.js}"></script>
 <title>Gallery</title>
 </head>
 <body>
@@ -33,7 +32,7 @@
 							<li><a href="welcome">Home</a></li>
 							<li><a href="booking">Booking</a></li>
 							<li class="active"><a href="gallery">Gallery</a></li>
-							<li><a href="contact">Contact</a></li> 
+							<li><a href="contact">Contact</a></li>
 							<li><a th:replace="fragments/logoutInclude :: logout"></a></li>
 						</ul>
 					</form>
@@ -53,8 +52,7 @@
 			</div>
 			<br> <br>
 			<div id="galleryImages">
-				<img id="myImg" src="${/images/hotel-1.jpg}"/>"
-				/>
+				<img id="myImg" th:src="@{/images/hotel-1.jpg}" />
 			</div>
 		</div>
 	</div>

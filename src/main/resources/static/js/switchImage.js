@@ -9,5 +9,5 @@ function switchImage(i, d) {
 	} else if (img <= 1) {
 		img = imgs - 1;
 	}
-	i.src = "resources/images/hotel-" + img + ".jpg";
+	i.src = "/images/hotel-" + img + ".jpg";
 }
