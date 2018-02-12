@@ -4,14 +4,12 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head></head>
 <body>
-	<div id="userText" th:fragment="welcomeBackUser">
-		<sec:authorize access="hasRole('USER')">
-			<div class="container-fluid"
-				th:if="${#authorization.name !=null}">
-				<h3 id="userId">Welcome back,
-					${authorization.name}</h3>
+	<div sec:authorize="isAuthenticated()" id="userText" th:fragment="welcomeBackUser">
+			<div class="container-fluid">
+				<h3 id="userId">
+					Welcome back, <span th:text="${#authentication.name}"></span>
+				</h3>
 			</div>
-		</sec:authorize>
 	</div>
 </body>
 </html>
