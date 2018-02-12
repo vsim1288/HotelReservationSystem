@@ -35,12 +35,14 @@
 		</div>
 		<br></br>
 
+		<p class="text-center alert-danger" th:if="${param.error}">Wrong username or password!</p>
+
 		<form id="loginForm" class="form-horizontal" th:action="@{/login}"
 			method="post">
 			<div class="form-group">
 				<label class="control-label col-sm-5" for="username">Username:</label>
 				<div class="col-sm-2">
-					<input type="text" class="form-control" name="username"
+					<input type="text" class="form-control" name="username" autofocus="autofocus"
 						id="username" placeholder="Enter username" required="required" />
 				</div>
 			</div>
