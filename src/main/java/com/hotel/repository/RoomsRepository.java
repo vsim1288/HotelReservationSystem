@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hotel.entity.Rooms;
 
-@Repository
-public interface RoomsRepository extends JpaRepository<Rooms, Long> {
-
+@Repository("roomsRepository")
+public interface RoomsRepository extends JpaRepository<Rooms, Long>, RoomsRepositoryCustom {
+	
 }

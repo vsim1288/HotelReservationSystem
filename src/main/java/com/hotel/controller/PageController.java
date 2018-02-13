@@ -15,11 +15,6 @@ public class PageController {
 	public ModelAndView welcome() {
 		return new ModelAndView("welcome");
 	}
-
-	@GetMapping("/booking")
-	public ModelAndView booking() {
-		return new ModelAndView("booking");
-	}
 	
 	@GetMapping("/gallery")
 	public ModelAndView gallery() {

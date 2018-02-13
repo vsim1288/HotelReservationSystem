@@ -8,13 +8,6 @@ import com.hotel.entity.Booking;
 
 @Service
 public interface BookingService {
-	public Booking get(int id);
-
-	public int save(Booking room);
-
-	public List<Booking> getAll();
-
-	public void update(int id, Booking room);
-
-	public void delete(int id);
+	public void saveBooking(String checkIn, String checkOut, String people, String username);
+	public List<Booking> findAll();
 }

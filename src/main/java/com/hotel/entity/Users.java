@@ -39,6 +39,7 @@ public class Users {
 	private Roles roleId;
 
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "users", cascade = CascadeType.ALL)
+	@Transient
 	private UserInformation userInfo;
 
 	@Transient
@@ -118,5 +119,16 @@ public class Users {
 	public void setUserInfo(UserInformation userInfo) {
 		this.userInfo = userInfo;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Users [username=" + username + ", password=" + password + ", enabled=" + enabled + ", roleId=" + roleId
+				+ ", userInfo=" + userInfo + ", bookingList=" + bookingList + "]";
+	}
+	
+	
 
 }

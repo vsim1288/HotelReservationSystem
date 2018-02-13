@@ -7,5 +7,5 @@ import com.hotel.entity.Booking;
 
 @Repository
 public interface BookingRepository extends JpaRepository<Booking, Long> {
-
+	
 }

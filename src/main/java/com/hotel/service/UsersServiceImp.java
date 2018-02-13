@@ -57,4 +57,9 @@ public class UsersServiceImp implements UsersService {
 	public List<Users> findAll() {
 		return userRepository.findAll();
 	}
+
+	@Override
+	public Users findByUsername(String username) {
+		return userRepository.findByUsername(username);
+	}
 }

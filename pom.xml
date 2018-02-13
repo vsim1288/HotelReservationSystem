@@ -72,7 +72,7 @@
 		<dependency>
 			<groupId>org.thymeleaf.extras</groupId>
 			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
-			</dependency>
+		</dependency>
 
 
 		<!-- https://mvnrepository.com/artifact/net.sourceforge.nekohtml/nekohtml -->
@@ -127,6 +127,13 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+		</dependency>
+
 
 	</dependencies>
 

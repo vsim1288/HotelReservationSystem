@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import com.hotel.entity.Rooms;
 import com.hotel.repository.RoomsRepository;
 
-@Service
+@Service("roomsService")
 public class RoomsServiceImp implements RoomsService {
 	
 	@Autowired
-	private RoomsRepository roomsDaoImp;
+	private RoomsRepository roomsRepository;
 	
 	@Override
 	public Rooms get(int id) {
@@ -21,12 +21,12 @@ public class RoomsServiceImp implements RoomsService {
 
 	@Override
 	public void save(Rooms room) {
-		roomsDaoImp.save(room);
+		roomsRepository.save(room);
 	}
 
 	@Override
 	public List<Rooms> findAll() {
-		return roomsDaoImp.findAll();
+		return roomsRepository.findAll();
 	}
 
 	@Override
@@ -38,5 +38,8 @@ public class RoomsServiceImp implements RoomsService {
 	public void delete(int id) {
 
 	}
-
+	
+	public List<Rooms> findVacantRooms(String checkIn, String checkOut) {
+		return roomsRepository.findVacantRooms(checkIn, checkOut);
+	}
 }

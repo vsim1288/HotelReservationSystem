@@ -15,14 +15,14 @@ import javax.persistence.Transient;
 public class Rooms {
 
 	@Id
-	@Column(name = "RoomId")
+	@Column(name = "room_id")
 	private Integer roomId;
 
-	@Column(name = "Occupied")
+	@Column(name = "occupied")
 	private Boolean occupied;
 
 	@ManyToOne
-	@JoinColumn(name = "RoomTypesID")
+	@JoinColumn(name = "roomtypes_id")
 	private RoomTypes roomTypes;
 	
 	@Transient

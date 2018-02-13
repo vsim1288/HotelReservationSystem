@@ -7,5 +7,5 @@ import com.hotel.entity.Users;
 
 @Repository("userRepository")
 public interface UserRepository extends JpaRepository<Users, Long> {
-
+	public Users findByUsername(String username);
 }
