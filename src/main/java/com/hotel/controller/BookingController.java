@@ -59,7 +59,12 @@ public class BookingController {
 		checkIn = dtf.parseDateTime(bookingForm.getCheckIn());
 		checkOut = dtf.parseDateTime(bookingForm.getCheckOut());
 		
-		if(checkOut.isBefore(checkIn) || checkOut.equals(checkIn)) {
+		if(checkIn.isBeforeNow()) {
+			log.info("Check-in date is before today!");
+			bindingResult.rejectValue("checkIn", "error.checkIn", "Check-in day must be set for today or a future date!");
+		}
+		
+		if(checkOut.isBefore(checkIn) || checkOut.isEqual(checkIn)) {
 			log.info("Check-in date is after or equal to check-out date!");
 			bindingResult.rejectValue("checkIn", "error.checkIn", "Check-in date is after or equal to check-out date!");
 		}

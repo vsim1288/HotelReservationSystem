@@ -8,9 +8,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
+import javax.transaction.Transactional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +35,7 @@ public class BookingServiceImp implements BookingService {
 
 	@SuppressWarnings("unused")
 	@Override
+	@Transactional
 	public void saveBooking(String checkIn, String checkOut, String people, String username) {
 		final Logger log = LoggerFactory.getLogger(BookingServiceImp.class);
 		Date checkInDate = null, checkOutDate = null;

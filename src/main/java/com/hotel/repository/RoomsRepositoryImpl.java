@@ -14,7 +14,8 @@ public class RoomsRepositoryImpl implements RoomsRepositoryCustom {
 
 	@Override
 	public List<Rooms> findVacantRooms(String checkIn, String checkOut) {
-		Query query = em.createNativeQuery("select ro.*\r\n" + 
+		Query query = em.createNativeQuery(
+				"select ro.*\r\n" + 
 				"from Rooms ro\r\n" + 
 				"where ro.room_id not in (\r\n" + 
 				"select \r\n" + 
@@ -28,6 +29,7 @@ public class RoomsRepositoryImpl implements RoomsRepositoryCustom {
 		query.setParameter("checkIn", checkIn);
 		query.setParameter("checkOut", checkOut);
 		
+		@SuppressWarnings("unchecked")
 		List<Rooms> roomsList = query.getResultList();
 		
 		for(Rooms r: roomsList) {
