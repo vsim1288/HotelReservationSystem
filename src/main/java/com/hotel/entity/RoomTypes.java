@@ -1,14 +1,11 @@
 package com.hotel.entity;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "roomtypes")
@@ -23,9 +20,6 @@ public class RoomTypes {
 
 	@Column(name = "NumberOfBeds")
 	private Integer numberOfBeds;
-
-	@Transient
-	private List<Integer> rooms;
 
 	/**
 	 * @return the roomTypesId
@@ -72,19 +66,13 @@ public class RoomTypes {
 		this.numberOfBeds = numberOfBeds;
 	}
 
-	/**
-	 * @return the rooms
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
 	 */
-	public List<Integer> getRooms() {
-		return rooms;
-	}
-
-	/**
-	 * @param rooms
-	 *            the rooms to set
-	 */
-	public void setRooms(List<Integer> rooms) {
-		this.rooms = rooms;
+	@Override
+	public String toString() {
+		return "RoomTypes [roomTypesId=" + roomTypesId + ", description=" + description + ", numberOfBeds="
+				+ numberOfBeds + "]";
 	}
 
 }

@@ -11,28 +11,32 @@ import org.joda.time.format.DateTimeFormatter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hotel.entity.Booking;
 import com.hotel.form.BookingForm;
 import com.hotel.service.BookingService;
 
-@RestController
+@Controller
 public class BookingController {
 	@Autowired
 	private BookingService bookingService;
 
-	@GetMapping("/booking/getAll")
-	public ResponseEntity<List<Booking>> getAll() {
+	@RequestMapping(value = "/booking/getAll", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Booking> getAll() {
 		List<Booking> bookingList = bookingService.findAll();
-		return ResponseEntity.ok().body(bookingList);
+		
+		return bookingList;
 	}
-	
+
 	@GetMapping("/booking")
 	public ModelAndView getBooking() {
 		ModelAndView model = new ModelAndView();
@@ -55,16 +59,17 @@ public class BookingController {
 		log.info(bookingForm.getCheckOut());
 		log.info(bookingForm.getPeople());
 		log.info(principal.getName());
-		
+
 		checkIn = dtf.parseDateTime(bookingForm.getCheckIn());
 		checkOut = dtf.parseDateTime(bookingForm.getCheckOut());
-		
-		if(checkIn.isBeforeNow()) {
+
+		if (checkIn.isBeforeNow()) {
 			log.info("Check-in date is before today!");
-			bindingResult.rejectValue("checkIn", "error.checkIn", "Check-in day must be set for today or a future date!");
+			bindingResult.rejectValue("checkIn", "error.checkIn",
+					"Check-in day must be set for today or a future date!");
 		}
-		
-		if(checkOut.isBefore(checkIn) || checkOut.isEqual(checkIn)) {
+
+		if (checkOut.isBefore(checkIn) || checkOut.isEqual(checkIn)) {
 			log.info("Check-in date is after or equal to check-out date!");
 			bindingResult.rejectValue("checkIn", "error.checkIn", "Check-in date is after or equal to check-out date!");
 		}
@@ -74,8 +79,9 @@ public class BookingController {
 			model.setViewName("booking");
 		} else {
 			log.info("Everything is ok");
-			
-			bookingService.saveBooking(bookingForm.getCheckIn(), bookingForm.getCheckOut(), bookingForm.getPeople(), principal.getName());
+
+			bookingService.saveBooking(bookingForm.getCheckIn(), bookingForm.getCheckOut(), bookingForm.getPeople(),
+					principal.getName());
 
 			model.setViewName("booking");
 		}

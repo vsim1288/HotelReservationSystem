@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -28,10 +26,6 @@ public class UserInformation {
 
 	@Column(name = "Phone")
 	private String phone;
-
-	@OneToOne
-	@PrimaryKeyJoinColumn
-	private Users users;
 
 	/**
 	 * @return the firstName
@@ -106,20 +100,5 @@ public class UserInformation {
 	 */
 	public void setUserInfoId(int userInfoId) {
 		this.userInfoId = userInfoId;
-	}
-
-	/**
-	 * @return the users
-	 */
-	public Users getUsers() {
-		return users;
-	}
-
-	/**
-	 * @param users
-	 *            the users to set
-	 */
-	public void setUsers(Users users) {
-		this.users = users;
 	}
 }

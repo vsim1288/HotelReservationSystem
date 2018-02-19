@@ -111,4 +111,15 @@ public class Booking {
 	public void setUsername(Users username) {
 		this.username = username;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Booking [bookingId=" + bookingId + ", roomId=" + roomId + ", startDate=" + startDate + ", endDate="
+				+ endDate + ", username=" + username + "]";
+	}
+	
+	
 }

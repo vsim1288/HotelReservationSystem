@@ -1,7 +1,5 @@
 package com.hotel.entity;
 
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,8 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -38,12 +34,8 @@ public class Users {
 	@JoinColumn(name = "RoleId")
 	private Roles roleId;
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "users", cascade = CascadeType.ALL)
-	@Transient
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private UserInformation userInfo;
-
-	@Transient
-	private List<Booking> bookingList;
 
 	/**
 	 * @return the username
@@ -126,7 +118,7 @@ public class Users {
 	@Override
 	public String toString() {
 		return "Users [username=" + username + ", password=" + password + ", enabled=" + enabled + ", roleId=" + roleId
-				+ ", userInfo=" + userInfo + ", bookingList=" + bookingList + "]";
+				+ ", userInfo=" + userInfo + "]";
 	}
 	
 	

@@ -1,14 +1,11 @@
 package com.hotel.entity;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "rooms")
@@ -24,9 +21,6 @@ public class Rooms {
 	@ManyToOne
 	@JoinColumn(name = "roomtypes_id")
 	private RoomTypes roomTypes;
-	
-	@Transient
-	private List<Booking> bookingList;
 	
 	public Rooms() {}
 
@@ -79,6 +73,14 @@ public class Rooms {
 	 */
 	public void setRoomTypes(RoomTypes roomTypes) {
 		this.roomTypes = roomTypes;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Rooms [roomId=" + roomId + ", occupied=" + occupied + ", roomTypes=" + roomTypes + "]";
 	}
 
 }
